@@ -1,0 +1,831 @@
+@font-face {
+    font-family: 'Chillax';
+    src: local('Chillax Regular'), local('Chillax'),
+        url("../fonts/chillax/Chillax-Regular.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Chillax';
+    src: local('Chillax Light'), local('Chillax'),
+        url("../fonts/chillax/Chillax-Light.otf") format("opentype");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Chillax';
+    src: local('Chillax Semibold'), local('Chillax'),
+        url("../fonts/chillax/Chillax-Semibold.otf") format("opentype");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: local('Nunito Regular'), local('Nunito'),
+        url("../fonts/Nunito/static/Nunito-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: local('Nunito Medium'), local('Nunito'),
+        url("../fonts/Nunito/static/Nunito-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: local('Nunito Bold'), local('Nunito'),
+        url("../fonts/Nunito/static/Nunito-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+*,
+*::after,
+*::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: var(--primary-font);
+}
+
+:root[data-bs-theme=dark] {
+    --myadmin-light: #252630;
+    --myadmin-light-rgb: 37, 38, 48;
+    --myadmin-dark: #f1f1f1;
+    --myadmin-dark-rgb: 241, 241, 241;
+    --myadmin-box-shadow: 0px 0px 35px 0px rgba(26, 27, 34, 0.5)
+}
+
+:root[data-menu-color=light] {
+    --myadmin-menu-bg: #fff;
+    --myadmin-menu-item-color: #6c757d;
+    --myadmin-menu-item-hover-color: #348cd4;
+    --myadmin-menu-item-hover-bg: rgba(52, 140, 212, 0.1);
+    --myadmin-menu-item-active-color: #348cd4;
+    --myadmin-menu-item-active-bg: transparent;
+    --myadmin-sidebar-user-bg: #f6fafd
+}
+
+:root[data-menu-color=dark] {
+    --myadmin-menu-bg: #252630;
+    --myadmin-menu-item-color: #97aac1;
+    --myadmin-menu-item-hover-color: #e2eeff;
+    --myadmin-menu-item-hover-bg: #1e1f27;
+    --myadmin-menu-item-active-color: #e2eeff;
+    --myadmin-menu-item-active-bg: transparent;
+    --myadmin-sidebar-user-bg: #1e1f27;
+}
+
+:root[data-bs-theme=dark][data-menu-color=light],
+:root[data-menu-color=dark][data-bs-theme=dark] {
+    --myadmin-menu-bg: #1e1f27;
+    --myadmin-menu-item-color: #97aac1;
+    --myadmin-menu-item-hover-color: #e2eeff;
+    --myadmin-menu-item-hover-bg: #252630;
+    --myadmin-menu-item-active-color: #e2eeff;
+    --myadmin-menu-item-active-bg: transparent;
+    --myadmin-sidebar-user-bg: #252630;
+}
+
+:root[data-menu-color=brand] {
+    --myadmin-menu-bg: #348cd4;
+    --myadmin-menu-item-color: #e1e5e9;
+    --myadmin-menu-item-hover-color: #ffffff;
+    --myadmin-menu-item-hover-bg: rgba(255, 255, 255, 0.1);
+    --myadmin-menu-item-active-color: #ffffff;
+    --myadmin-menu-item-active-bg: transparent;
+    --myadmin-sidebar-user-bg: rgba(255, 255, 255, 0.1)
+}
+
+:root[data-menu-color=gradient] {
+    --myadmin-menu-bg: linear-gradient(to bottom, #5d6dc3, #3c86d8);
+    --myadmin-menu-item-color: #e1e5e9;
+    --myadmin-menu-item-hover-color: #ffffff;
+    --myadmin-menu-item-hover-bg: rgba(255, 255, 255, 0.1);
+    --myadmin-menu-item-active-color: #ffffff;
+    --myadmin-menu-item-active-bg: transparent;
+    --myadmin-sidebar-user-bg: rgba(255, 255, 255, 0.1)
+}
+
+:root[data-topbar-color=light] {
+    --myadmin-topbar-bg: #fff;
+    --myadmin-topbar-item-color: #6c757d;
+    --myadmin-topbar-item-hover-color: #348cd4;
+    --myadmin-topbar-search-bg: #eaeff3;
+    --myadmin-topbar-user-bg: transparent;
+    --myadmin-topbar-user-border: #eef2f7
+}
+
+:root[data-bs-theme=dark][data-topbar-color=light],
+:root[data-topbar-color=dark] {
+    --myadmin-topbar-bg: #1e1f27;
+    --myadmin-topbar-item-color: #aab9ca;
+    --myadmin-topbar-item-hover-color: #e4f0ff;
+    --myadmin-topbar-search-bg: rgba(255, 255, 255, 0.05);
+    --myadmin-topbar-user-bg: transparent;
+    --myadmin-topbar-user-border: rgba(255, 255, 255, 0.05)
+}
+
+:root[data-topbar-color=brand] {
+    --myadmin-topbar-bg: #348cd4;
+    --myadmin-topbar-item-color: rgba(255, 255, 255, 0.9);
+    --myadmin-topbar-item-hover-color: #ffffff;
+    --myadmin-topbar-search-bg: rgba(255, 255, 255, 0.1);
+    --myadmin-topbar-user-bg: rgba(255, 255, 255, 0.1);
+    --myadmin-topbar-user-border: rgba(255, 255, 255, 0.15)
+}
+
+:root[data-topbar-color=gradient] {
+    --myadmin-topbar-bg: linear-gradient(to top, #5d6dc3, #3c86d8);
+    --myadmin-topbar-item-color: rgba(255, 255, 255, 0.9);
+    --myadmin-topbar-item-hover-color: #ffffff;
+    --myadmin-topbar-search-bg: rgba(255, 255, 255, 0.1);
+    --myadmin-topbar-user-bg: rgba(255, 255, 255, 0.1);
+    --myadmin-topbar-user-border: rgba(255, 255, 255, 0.15)
+}
+
+:root,
+[data-bs-theme=light] {
+    --myadmin-blue: #348cd4;
+    --myadmin-indigo: #5d6dc3;
+    --myadmin-pink: #e061c9;
+    --myadmin-red: #f36270;
+    --myadmin-orange: #fd7e14;
+    --myadmin-yellow: #f9bc0b;
+    --myadmin-green: #3ec396;
+    --myadmin-teal: #02a8b5;
+    --myadmin-cyan: #4fbde9;
+    --myadmin-black: #000;
+    --myadmin-white: #fff;
+    --myadmin-gray: #8a969c;
+    --myadmin-gray-dark: #343a40;
+    --myadmin-gray-100: #f6f7fb;
+    --myadmin-gray-200: #eef2f7;
+    --myadmin-gray-300: #e7e9eb;
+    --myadmin-gray-400: #ced4da;
+    --myadmin-gray-500: #a1a9b1;
+    --myadmin-gray-600: #8a969c;
+    --myadmin-gray-700: #6c757d;
+    --myadmin-gray-800: #343a40;
+    --myadmin-gray-900: #313a46;
+    --myadmin-primary: #348cd4;
+    --myadmin-secondary: #9368f3;
+    --myadmin-success: #3ec396;
+    --myadmin-info: #4fbde9;
+    --myadmin-warning: #f9bc0b;
+    --myadmin-danger: #f36270;
+    --myadmin-light: #eef2f7;
+    --myadmin-dark: #313a46;
+    --myadmin-primary-rgb: 52, 140, 212;
+    --myadmin-secondary-rgb: 147, 104, 243;
+    --myadmin-success-rgb: 62, 195, 150;
+    --myadmin-info-rgb: 79, 189, 233;
+    --myadmin-warning-rgb: 249, 188, 11;
+    --myadmin-danger-rgb: 243, 98, 112;
+    --myadmin-light-rgb: 238, 242, 247;
+    --myadmin-dark-rgb: 49, 58, 70;
+    --myadmin-primary-text-emphasis: #2c77b4;
+    --myadmin-secondary-text-emphasis: #7d58cf;
+    --myadmin-success-text-emphasis: #35a680;
+    --myadmin-info-text-emphasis: #43a1c6;
+    --myadmin-warning-text-emphasis: #d4a009;
+    --myadmin-danger-text-emphasis: #cf535f;
+    --myadmin-light-text-emphasis: #8a969c;
+    --myadmin-dark-text-emphasis: #343a40;
+    --myadmin-primary-bg-subtle: #e1eef9;
+    --myadmin-secondary-bg-subtle: #efe8fd;
+    --myadmin-success-bg-subtle: #e2f6ef;
+    --myadmin-info-bg-subtle: #e5f5fc;
+    --myadmin-warning-bg-subtle: #fef5da;
+    --myadmin-danger-bg-subtle: #fde7ea;
+    --myadmin-light-bg-subtle: #fbfbfd;
+    --myadmin-dark-bg-subtle: #ced4da;
+    --myadmin-primary-border-subtle: #aed1ee;
+    --myadmin-secondary-border-subtle: #d4c3fa;
+    --myadmin-success-border-subtle: #b2e7d5;
+    --myadmin-info-border-subtle: #b9e5f6;
+    --myadmin-warning-border-subtle: #fde49d;
+    --myadmin-danger-border-subtle: #fac0c6;
+    --myadmin-light-border-subtle: #eef2f7;
+    --myadmin-dark-border-subtle: #a1a9b1;
+    --myadmin-white-rgb: 255, 255, 255;
+    --myadmin-black-rgb: 0, 0, 0;
+    --myadmin-font-sans-serif: "Nunito Sans", sans-serif;
+    --myadmin-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --myadmin-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+    --myadmin-body-font-family: var(--myadmin-font-sans-serif);
+    --myadmin-body-font-size: 0.875rem;
+    --myadmin-body-font-weight: 400;
+    --myadmin-body-line-height: 1.5;
+    --myadmin-body-color: #4c4c5c;
+    --myadmin-body-color-rgb: 76, 76, 92;
+    --myadmin-body-bg: #f3f3f3;
+    --myadmin-body-bg-rgb: 243, 243, 243;
+    --myadmin-emphasis-color: rgba(76, 76, 92, 0.75);
+    --myadmin-emphasis-color-rgb: 76, 76, 92;
+    --myadmin-secondary-color: #9ba6b7;
+    --myadmin-secondary-color-rgb: 155, 166, 183;
+    --myadmin-secondary-bg: #fff;
+    --myadmin-secondary-bg-rgb: 255, 255, 255;
+    --myadmin-tertiary-color: rgba(76, 76, 92, 0.5);
+    --myadmin-tertiary-color-rgb: 76, 76, 92;
+    --myadmin-tertiary-bg: #f6f7fb;
+    --myadmin-tertiary-bg-rgb: 246, 247, 251;
+    --myadmin-heading-color: inherit;
+    --myadmin-link-color: #348cd4;
+    --myadmin-link-color-rgb: 52, 140, 212;
+    --myadmin-link-decoration: none;
+    --myadmin-link-hover-color: #2c77b4;
+    --myadmin-link-hover-color-rgb: 44, 119, 180;
+    --myadmin-code-color: #4fbde9;
+    --myadmin-highlight-color: #4c4c5c;
+    --myadmin-highlight-bg: #fef2ce;
+    --myadmin-border-width: 1px;
+    --myadmin-border-style: solid;
+    --myadmin-border-color: #e7e9eb;
+    --myadmin-border-color-translucent: #ced4da;
+    --myadmin-border-radius: 0.3rem;
+    --myadmin-border-radius-sm: 0.25rem;
+    --myadmin-border-radius-lg: 0.4rem;
+    --myadmin-border-radius-xl: 1rem;
+    --myadmin-border-radius-xxl: 2rem;
+    --myadmin-border-radius-2xl: var(--myadmin-border-radius-xxl);
+    --myadmin-border-radius-pill: 50rem;
+    --myadmin-box-shadow: 0 0 35px 0 rgba(154, 161, 171, 0.15);
+    --myadmin-box-shadow-sm: 0 0.125rem 0.25rem rgba(var(--myadmin-body-color-rgb), 0.15);
+    --myadmin-box-shadow-lg: 0 0 45px 0 rgba(var(--myadmin-body-color-rgb), 0.2);
+    --myadmin-box-shadow-inset: inset 0 1px 2px rgba(var(--myadmin-body-color-rgb), 0.075);
+    --myadmin-focus-ring-width: 0;
+    --myadmin-focus-ring-opacity: 0.25;
+    --myadmin-focus-ring-color: rgba(52, 140, 212, 0.25);
+    --myadmin-form-valid-color: #3ec396;
+    --myadmin-form-valid-border-color: #3ec396;
+    --myadmin-form-invalid-color: #f36270;
+    --myadmin-form-invalid-border-color: #f36270;
+    /* --myadmin-sidebar-bg: #21222c; */
+}
+
+[data-bs-theme=dark] {
+    color-scheme: dark;
+    --myadmin-body-color: #aab8c5;
+    --myadmin-body-color-rgb: 170, 184, 197;
+    --myadmin-body-bg: #17181e;
+    --myadmin-body-bg-rgb: 23, 24, 30;
+    --myadmin-emphasis-color: #dee2e6;
+    --myadmin-emphasis-color-rgb: 222, 226, 230;
+    --myadmin-secondary-color: #8391a2;
+    --myadmin-secondary-color-rgb: 131, 145, 162;
+    --myadmin-secondary-bg: #1e1f27;
+    --myadmin-secondary-bg-rgb: 30, 31, 39;
+    --myadmin-tertiary-color: #f1f1f1;
+    --myadmin-tertiary-color-rgb: 241, 241, 241;
+    --myadmin-tertiary-bg: #404954;
+    --myadmin-tertiary-bg-rgb: 64, 73, 84;
+    --myadmin-primary-text-emphasis: #85bae5;
+    --myadmin-secondary-text-emphasis: #bea4f8;
+    --myadmin-success-text-emphasis: #8bdbc0;
+    --myadmin-info-text-emphasis: #95d7f2;
+    --myadmin-warning-text-emphasis: #fbd76d;
+    --myadmin-danger-text-emphasis: #f8a1a9;
+    --myadmin-light-text-emphasis: #f6f7fb;
+    --myadmin-dark-text-emphasis: #e7e9eb;
+    --myadmin-primary-bg-subtle: rgba(52, 140, 212, 0.2);
+    --myadmin-secondary-bg-subtle: rgba(147, 104, 243, 0.2);
+    --myadmin-success-bg-subtle: rgba(62, 195, 150, 0.2);
+    --myadmin-info-bg-subtle: rgba(79, 189, 233, 0.2);
+    --myadmin-warning-bg-subtle: rgba(249, 188, 11, 0.2);
+    --myadmin-danger-bg-subtle: rgba(243, 98, 112, 0.2);
+    --myadmin-light-bg-subtle: #252630;
+    --myadmin-dark-bg-subtle: #1a1d20;
+    --myadmin-primary-border-subtle: #1f547f;
+    --myadmin-secondary-border-subtle: #583e92;
+    --myadmin-success-border-subtle: #25755a;
+    --myadmin-info-border-subtle: #2f718c;
+    --myadmin-warning-border-subtle: #957107;
+    --myadmin-danger-border-subtle: #923b43;
+    --myadmin-light-border-subtle: #6c757d;
+    --myadmin-dark-border-subtle: #343a40;
+    --myadmin-heading-color: #aab8c5;
+    --myadmin-link-color: #85bae5;
+    --myadmin-link-hover-color: #97c4e9;
+    --myadmin-link-color-rgb: 133, 186, 229;
+    --myadmin-link-hover-color-rgb: 151, 196, 233;
+    --myadmin-code-color: #95d7f2;
+    --myadmin-highlight-color: #dee2e6;
+    --myadmin-highlight-bg: #664d03;
+    --myadmin-border-color: #37394d;
+    --myadmin-border-color-translucent: #323d4b;
+    --myadmin-form-valid-color: #8bdbc0;
+    --myadmin-form-valid-border-color: #8bdbc0;
+    --myadmin-form-invalid-color: #f8a1a9;
+    --myadmin-form-invalid-border-color: #f8a1a9;
+    /* --myadmin-sidebar-bg: #1e1f27; */
+}
+
+:root {
+    --primary-font: "Nunito", sans-serif;
+    --myadmin-logo-lg-height: 22px;
+    --myadmin-logo-sm-height: 28px;
+    --myadmin-sidenav-width: 240px;
+    --myadmin-sidenav-width-md: 160px;
+    --myadmin-sidenav-width-sm: 70px;
+    --myadmin-topbar-height: 70px;
+    --myadmin-menu-item-icon-size: 1.125rem;
+    --myadmin-menu-item-font-size: 0.925rem;
+    --myadmin-menu-link-item-gap: 12px;
+    --myadmin-menu-item-padding-x: 15px;
+    --myadmin-menu-item-padding-y: 8px;
+    --myadmin-menu-item-item-gap: 2px;
+}
+
+/* apply fonts: Nunito for body, Chillax for headings */
+body {
+    font-family: var(--primary-font);
+    color: var(--myadmin-gray-dark);
+    background-color: var(--myadmin-light);
+
+    margin: 0;
+    font-size: var(--myadmin-body-font-size);
+    font-weight: var(--myadmin-body-font-weight);
+    line-height: var(--myadmin-body-line-height);
+    color: var(--myadmin-body-color);
+    text-align: var(--myadmin-body-text-align);
+    background-color: var(--myadmin-body-bg);
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body.modal-available {
+    overflow: hidden;
+}
+
+svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+.rounded {
+    border-radius: 50%;
+}
+
+input {
+    border: none;
+    outline: none;
+    font-family: var(--primary-font);
+}
+
+.container {
+    width: 100%;
+    padding: 0 20px;
+    margin: auto;
+}
+
+.layout {
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "sidebar main main"
+        "footer footer footer"
+    ;
+    grid-template-columns: 250px repeat(2, 1fr);
+    /* gap: 20px; */
+    grid-template-rows: var(--myadmin-topbar-height) 500px 200px;
+    /* justify-items: stretch;
+            align-items: start;
+            justify-content: end; */
+    max-width: 100%;
+    width: 100%;
+    background-color: #f5f5f5;
+}
+
+.topbar {
+    grid-area: header;
+    background: var(--myadmin-topbar-bg);
+    position: sticky;
+    top: 0;
+    z-index: 1010;
+    background: var(--myadmin-topbar-bg);
+    min-height: var(--myadmin-topbar-height);
+    margin-left: 0;
+    border-bottom: 1px solid var(--myadmin-topbar-user-border);
+    -webkit-box-shadow: var(--myadmin-box-shadow);
+    box-shadow: var(--myadmin-box-shadow);
+    -webkit-transition: all .25s ease-in-out;
+    transition: all .25s ease-in-out;
+    padding: 0 .75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--myadmin-topbar-item-color);
+    text-transform: capitalize;
+}
+
+.main-content {
+    grid-area: main;
+    /* background-color: red; */
+}
+
+footer {
+    grid-area: footer;
+    background-color: yellow;
+}
+
+/* topbar */
+.topbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topbar-group {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: clamp(2rem, 7vw, 1.8rem);
+    color: var(--myadmin-white);
+}
+
+.topbar-item {
+    cursor: pointer;
+    color: var(--myadmin-topbar-item-color);
+}
+
+.topbar-group button {
+    background: transparent;
+    border: transparent;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.topbar-item.search-toggle {
+    display: flex;
+    gap: 10px;
+    background-color: var(--myadmin-topbar-search-bg);
+    padding: 10px 20px;
+    width: 200px;
+    border-radius: 20px;
+    /* cursor: pointer; */
+}
+
+.topbar-item.view-site {
+    /* cursor: pointer; */
+    display: flex;
+    gap: 8px;
+    color: var(--myadmin-topbar-item-color);
+}
+
+.topbar-group-right {
+    gap: 20px;
+}
+
+.selected-language {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        width: 20px;
+        height: 20px;
+        /* cursor: pointer;  */
+    }
+}
+
+.notifications-icon svg.tada {
+    animation: tada 1.5s ease infinite;
+}
+
+.topbar-item .avatar {
+    width: 32px;
+}
+
+.nav-user .dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+}
+
+.overlay {
+    background-color: transparent;
+    backdrop-filter: blur(15px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 9999;
+    cursor: url('../images/usables/cursor-close.svg') 16 16, not-allowed;
+}
+
+.search-modal {
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99999;
+    background: var(--myadmin-white);
+    max-width: 800px;
+    width: 800px;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: auto 1fr auto;
+    padding: 15px 20px;
+    border-radius: 4px;
+
+    svg {
+        width: 25px;
+        height: 25px;
+    }
+
+    input::-webkit-search-cancel-button {
+        cursor: pointer;
+        display: block;
+    }
+
+    button {
+        background: transparent;
+        border: none;
+    }
+}
+
+.overlay.active,
+.search-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 200%;
+    right: 40%;
+    transform: translateX(50%);
+    z-index: 1000;
+    min-width: 11rem;
+    /* padding: 0.5rem 0.75rem; */
+    margin: 0.25rem 0 0 0;
+    font-size: 0.875rem;
+    color: var(--myadmin-body-color);
+    text-align: left;
+    list-style: none;
+    background: var(--myadmin-secondary-bg);
+    background-clip: padding-box;
+    border: 1px solid var(--myadmin-border-color);
+    border-radius: 0.3rem;
+    box-shadow: var(--myadmin-box-shadow-sm);
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.7s ease-in-out;
+    overflow: hidden;
+}
+
+/* .dropdown-menu.notifications-menu, .language-menu {
+    display: none;
+} */
+
+.nav-user-menu {
+    top: 150%;
+    right: 0;
+    transform: translateX(0);
+}
+
+.dropdown-menu.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.dropdown-menu.notifications-menu {
+    max-width: 370px;
+    width: 370px;
+}
+
+.dropdown-header, .dropdown-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px dashed var(--myadmin-border-color);
+}
+
+.dropdown-footer {
+    border-top: 1px solid var(--myadmin-border-color);
+    border-bottom: none;
+    justify-content: center;
+    a {
+        color: var(--myadmin-blue);
+    }
+}
+
+.notifications-header-icon {
+    color: var(--myadmin-body-color);
+    transition: 0.5s ease-in-out;
+}
+
+.notifications-header-icon:hover {
+    color: var(--myadmin-code-color);
+}
+
+.dropdown-content {
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+.dropdown-content::-webkit-scrollbar {
+    display: none;
+}
+
+.dropdown-item {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding: 8px 1.125rem;
+    font-size: calc(var(--myadmin-body-font-size) * 0.9);
+}
+
+a.dropdown-item {
+    color: var(--myadmin-body-color);
+}
+
+a.dropdown-item.sign-out {
+    color: var(--myadmin-danger);
+}
+
+.language-img {
+    width: 20px;
+    height: 20px;
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.notification-item-img {
+    width: 80px;
+    img {
+        width: 40px ;
+    }
+}
+
+.text-highlight {
+    font-weight: 600;
+}
+
+.text-success {
+    color: var(--myadmin-success);
+}
+
+.notification-item-remove {
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s ease-in-out;
+    svg {
+        fill: var(--myadmin-danger)
+    }
+}
+
+.dropdown-divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--myadmin-border-color);
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    color: var(--myadmin-body-color);
+    text-decoration: none;
+    background: var(--myadmin-light);
+}
+
+.dropdown-item:hover {
+    background: var(--myadmin-light);
+    color: var(--myadmin-body-color);
+}
+
+.dropdown-item:hover .notification-item-remove {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/*
+=================================================
+=================================================
+    Sidebar styling
+=================================================
+=================================================
+*/
+
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: var(--myadmin-menu-bg);
+    padding: 20px 0;
+    /* display: -webkit-box;
+    display: -ms-flexbox; */
+    /* display: flex; */
+    /* -webkit-box-orient: vertical; */
+    /* -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column; */
+    /* align-items: flex-start;
+    justify-content: flex-start;
+    gap: 4px; */
+    /* display: flex; */
+    color: var(--myadmin-menu-item-color);
+
+}
+
+.sidebar-header {
+    font-size: 0.7rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.sidebar-nav {
+    /* background-color: orange; */
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.sidebar-item {
+    display: flex;
+    gap: 6px;
+    width: 100%;
+    padding: var(--myadmin-menu-item-padding-y) var(--myadmin-menu-item-padding-x);
+    transition: 0.5s ease-in-out;
+    align-items: center;
+    color: var(--myadmin-menu-item-color);
+}
+
+.sidebar-item.active, .sidebar-item:active {
+    background: var(--myadmin-menu-item-active-bg);
+    color: var(--myadmin-menu-item-active-color);
+}
+
+.sidebar-item:hover {
+    background: var(--myadmin-menu-item-hover-bg);
+    color: var(--myadmin-menu-item-hover-color);
+}
+
+
+/*
+=================================================
+=================================================
+    Page Styling
+=================================================
+=================================================
+*/
+
+.page-content-header {
+    background-color: var(--myadmin-secondary-bg);
+    -webkit-box-shadow: var(--myadmin-box-shadow);
+    box-shadow: var(--myadmin-box-shadow);
+    padding: .75rem 1.125rem;
+    width: 100%;
+    margin-bottom: 1.125rem;
+}
