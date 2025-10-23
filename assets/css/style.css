@@ -1,2 +1,24 @@
+.quick-actions {
+    border-radius: 15px;
+    padding: 25px;
+    margin: 30px auto;
+}
 
+.quick-actions-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
 
+.quick-actions-card {
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    color: var(--myadmin-body-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    text-transform: capitalize;
+}

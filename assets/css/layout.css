@@ -881,12 +881,9 @@ a.dropdown-item {
 
 .page-content-footer {
     border-top: 1px solid var(--myadmin-border-color);
-}
-
-.quick-actions {
-    border-radius: 15px;
-    padding: 25px;
-    margin: 30px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .group-header {
@@ -900,34 +897,21 @@ a.dropdown-item {
     color: var(--myadmin-danger);
 }
 
-.quick-actions-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-}
-
-.quick-actions-card {
-    padding: 20px;
-    border-radius: var(--myadmin-border-radius);
-    text-align: center;
-    cursor: pointer;
+.card {
     transition: all 0.3s ease;
     text-decoration: none;
-    color: var(--color-primary-text);
-}
-
-.card {
+    border-radius: var(--myadmin-border-radius);
     background: var(--myadmin-secondary-bg);
     box-shadow: var(--myadmin-box-shadow);
     border: 1px solid var(--myadmin-border-color);
     padding: 20px;
 }
 
-.quick-actions-card:hover {
+.card:hover {
     box-shadow: var(--myadmin-box-shadow-lg);
 }
 
-.quick-actions-card svg,
-.quick-actions-card i {
-    margin-bottom: 10px;
+.quick-actions-card svg {
+    width: 30px;
+    height: 30px;
 }
