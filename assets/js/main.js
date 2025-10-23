@@ -190,3 +190,28 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+
+// sidebar-dropdown
+
+const sidebarDropdowns = document.querySelectorAll(".sidebar-dropdown")
+
+sidebarDropdowns.forEach(dropdownCon => {
+    const dropdownToggle = dropdownCon.querySelector(".sidebar-header");
+
+    const dropdownIcon = dropdownToggle.querySelector(".sidebar-header-icon");
+
+    const sidebarDropdownMenu = dropdownToggle.nextElementSibling;
+
+    if (sidebarDropdownMenu) {
+        dropdownToggle.addEventListener("click", () => {
+            sidebarDropdownMenu.classList.toggle("active");
+            dropdownIcon.classList.toggle("rotated");
+        })
+    }
+
+    if (sidebarDropdownMenu.classList.contains("active")) {
+        dropdownIcon.classList.add("rotated")
+    }
+})
+
