@@ -37,29 +37,96 @@ function handleMenuToggle(openBtn, menu, closeSelector = '.close-btn', activeCla
 }
 
 function hideAllMenus(activeClass = 'active') {
-    document.querySelectorAll('.search-modal, .sidebar').forEach(menu => {
+    // Check if any menu is still active before removing overlay
+    const menus = document.querySelectorAll('.search-modal, .smallScreen-sidebar, .dropdown-menu.active');
+    menus.forEach(menu => {
         menu.classList.remove(activeClass);
     });
+
     document.body.classList.remove('modal-available');
     const overlay = document.getElementById('overlay');
-    if (overlay) overlay.classList.remove('active');
+    if (overlay) {
+        overlay.classList.remove('active');
+    }
 }
 
 // Wire up search modal using the utility
 
 document.addEventListener('DOMContentLoaded', () => {
     const overlay = document.getElementById('overlay');
+
+    // Handle clicks outside menus
+    document.addEventListener('click', (e) => {
+        // Check if click was outside all menus and overlay is visible
+        if (overlay?.classList.contains('active')) {
+            const clickedOnMenu = e.target.closest('.search-modal, .smallScreen-sidebar, .dropdown-menu');
+            const clickedOnToggle = e.target.closest('.search-toggle, .sidenav-toggle-button, .dropdown-toggle');
+            if (!clickedOnMenu && !clickedOnToggle) {
+                hideAllMenus();
+            }
+        }
+    });
+
     const searchModal = document.querySelector('.search-modal');
     const searchToggle = document.querySelector('.search-toggle');
     if (searchModal && searchToggle) {
         handleMenuToggle(searchToggle, searchModal, 'button[aria-label="Close"]', 'active', overlay);
     }
-    // To wire up sidebar, uncomment and adjust:
-    // const sidebar = document.querySelector('.sidebar');
-    // const sidenavToggle = document.querySelector('.sidenav-toggle-button');
-    // if (sidebar && sidenavToggle) {
-    //     handleMenuToggle(sidenavToggle, sidebar, '.close-btn', 'open', overlay);
-    // }
+
+    // Sidebar Toggle Logic
+    const sidenavToggleButton = document.querySelector(".sidenav-toggle-button");
+    const sidebar = document.querySelector(".sidebar");
+    const layout = document.querySelector(".layout");
+    const smallScreenSidebar = document.querySelector(".smallScreen-sidebar");
+
+
+    if (sidebar && sidenavToggleButton) {
+        const handleResize = () => {
+            // Reset classes when switching breakpoints
+            if (window.innerWidth >= 1200) {
+                smallScreenSidebar.classList.remove('active');
+                overlay.classList.remove('active');
+            } else {
+                sidebar.classList.remove('hoverState');
+                layout.classList.remove('sidebarReduced');
+            }
+        };
+
+        // Handle resize events
+        window.addEventListener('resize', handleResize);
+
+        // Universal click handler for both desktop and mobile
+        sidenavToggleButton.addEventListener("click", () => {
+            if (window.innerWidth >= 1200) {
+                // Desktop behavior - resize sidebar
+                sidebar.classList.toggle("hoverState");
+                layout.classList.toggle("sidebarReduced");
+            } else {
+                // Mobile behavior - toggle small screen sidebar
+                hideAllMenus('active');
+                smallScreenSidebar.classList.add('active');
+                overlay.classList.add('active');
+                document.body.classList.add('modal-available');
+            }
+        });
+
+        // Add close button handler for mobile view
+        const closeBtn = smallScreenSidebar.querySelector('.close-btn');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                smallScreenSidebar.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.classList.remove('modal-available');
+            });
+        }
+
+        // Add overlay click handler for mobile view
+        overlay.addEventListener('click', () => {
+            smallScreenSidebar.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.classList.remove('modal-available');
+        });
+    }
 });
 
 // --- Theme manager (light/dark) ---
@@ -214,4 +281,3 @@ sidebarDropdowns.forEach(dropdownCon => {
         dropdownIcon.classList.add("rotated")
     }
 })
-
