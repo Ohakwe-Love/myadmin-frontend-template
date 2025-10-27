@@ -399,6 +399,9 @@ a {
 
 button {
     cursor: pointer;
+    background: transparent;
+    padding: 0;
+    border: none;
 }
 
 .rounded {
@@ -406,6 +409,8 @@ button {
 }
 
 input {
+    display: block;
+    background: transparent;
     border: none;
     outline: none;
     font-family: var(--primary-font);
@@ -456,12 +461,6 @@ input {
     align-items: center;
     color: var(--myadmin-topbar-item-color);
     text-transform: capitalize;
-}
-
-
-footer {
-    grid-area: footer;
-    background-color: gray;
 }
 
 /* topbar */
@@ -750,6 +749,92 @@ a.dropdown-item {
     opacity: 1;
 }
 
+.topbar-group-left .nav-user {
+    display: none;
+}
+
+@media (max-width: 1199px) {
+    .topbar {
+        padding: 0;
+    }
+
+    .topbar-group {
+        gap: 20px;
+    }
+
+    .topbar .container {
+        flex-wrap: wrap;
+    }
+
+    .topbar-item.search-toggle {
+        gap: 0;
+        background-color: transparent;
+        padding: 0;
+        width: auto;
+
+        .search-text {
+            display: none;
+        }
+    }
+
+    .topbar-item.view-site {
+        display: flex;
+        gap: 8px;
+
+        .view-site-text {
+            display: none;
+        }
+    }
+
+    .topbar-item.settings {
+        display: none;
+    }
+
+    .nav-user .dropdown-toggle {
+
+        .nav-user-icon,
+        .nav-user-name {
+            display: none;
+        }
+    }
+
+    .search-modal {
+        width: 90%;
+    }
+
+    .dropdown-menu {
+        right: 0%;
+        transform: translateX(0%);
+    }
+}
+
+@media (max-width: 600px) {
+    .topbar-group {
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .topbar-group-left .nav-user {
+        display: block;
+    }
+
+    .topbar-item.view-site {
+        display: none;
+    }
+
+    .topbar-item.search-toggle {
+        display: none;
+    }
+
+    .topbar-group {
+        justify-content: space-between;
+    }
+
+    .topbar-group-right {
+        display: none;
+    }
+}
+
 
 /*
 =================================================
@@ -792,9 +877,20 @@ a.dropdown-item {
     z-index: 9999;
     height: 100vh;
     transition: 0.5s ease-in-out;
+
+    .logo {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .sidebar-item.search-toggle {
+        margin-bottom: 20px;
+        background-color: var(--myadmin-topbar-search-bg);
+        padding: 10px 20px;
+        width: 100%;
+        border-radius: 20px;
+    }
 }
-
-
 
 @media (max-width: 1199px) {
     .smallScreen-sidebar.active {
@@ -808,7 +904,7 @@ a.dropdown-item {
             "main main"
         ;
     }
-    
+
     .default-sidebar {
         display: none;
     }
@@ -838,7 +934,10 @@ a.dropdown-item {
         padding: 10px 0;
     }
 
-    .logo,
+    .logo {
+        display: none !important;
+    }
+
     .sidebar-item-text {
         display: none;
     }
@@ -865,7 +964,6 @@ a.dropdown-item {
         top: 70px;
         left: 0;
         z-index: 1011;
-        /* height: 90vh; */
 
         .sidebar-dropdown {
             padding: 0;
@@ -945,6 +1043,16 @@ a.dropdown-item {
     text-transform: capitalize;
 }
 
+.sidebar-item.mode-btn-container {
+    /* display: none; */
+    cursor: pointer;
+
+    .mode-btn {
+        display: flex;
+        gap: 5px;
+    }
+}
+
 .sidebar-item-text {
     display: block;
 }
@@ -971,7 +1079,14 @@ a.dropdown-item {
 
 .page-content-wrapper {
     grid-area: main;
-    /* background-color: rebeccapurple; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.page-content-header {
+    text-transform: capitalize;
 }
 
 .page-content-header,
@@ -1001,8 +1116,14 @@ a.dropdown-item {
     display: flex;
     align-items: flex-start;
     gap: 20px;
+    width: 100%;
     flex-direction: column;
-    /* background-color: orange; */
+}
+
+@media (max-width: 600px) {
+    .page-content {
+        padding: 15px;
+    }
 }
 
 .group-header {
@@ -1037,21 +1158,21 @@ a.dropdown-item {
     margin-top: 20px;
 }
 
-.card-msg-row {
+.msg-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: var(--myadmin-body-color);
 }
 
 .msg-info {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
 }
 
-.msg-info .msg-img {
+.msg-img {
     width: 40px;
-    /* background-color: red; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1065,8 +1186,9 @@ a.dropdown-item {
     display: block;
 }
 
-.card-msg-row .time {
-    font-size: 12px;
+.msg-row .time {
+    font-size: 10px !important;
+    text-align: center;
 }
 
 .card-footer {

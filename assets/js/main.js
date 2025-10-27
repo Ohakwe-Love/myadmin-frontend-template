@@ -51,7 +51,6 @@ function hideAllMenus(activeClass = 'active') {
 }
 
 // Wire up search modal using the utility
-
 document.addEventListener('DOMContentLoaded', () => {
     const overlay = document.getElementById('overlay');
 
@@ -68,10 +67,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const searchModal = document.querySelector('.search-modal');
-    const searchToggle = document.querySelector('.search-toggle');
-    if (searchModal && searchToggle) {
-        handleMenuToggle(searchToggle, searchModal, 'button[aria-label="Close"]', 'active', overlay);
-    }
+    const searchToggle = document.querySelectorAll('.search-toggle');
+
+    searchToggle.forEach(toggle => {
+        if (searchModal && toggle) {
+            handleMenuToggle(toggle, searchModal, 'button[aria-label="Close"]', 'active', overlay);
+        }
+    })
 
     // Sidebar Toggle Logic
     const sidenavToggleButton = document.querySelector(".sidenav-toggle-button");
@@ -140,16 +142,19 @@ const ThemeManager = (() => {
         // apply to root as used by CSS: data-bs-theme
         document.documentElement.setAttribute('data-bs-theme', theme);
         // swap icons inside .mode-btn (expects two svgs inside)
-        const modeBtn = document.querySelector('.mode-btn');
-        if (modeBtn) {
-            modeBtn.querySelectorAll('svg').forEach(svg => svg.style.display = 'none');
-            if (theme === 'dark') {
-                const darkIcon = modeBtn.querySelector('.dark-mode-icon');
-                if (darkIcon) darkIcon.style.display = '';
-            } else {
-                const lightIcon = modeBtn.querySelector('.light-mode-icon');
-                if (lightIcon) lightIcon.style.display = '';
-            }
+        const modeBtns = document.querySelectorAll('.mode-btn');
+        if (modeBtns) {
+
+            modeBtns.forEach(modeBtn => {
+                modeBtn.querySelectorAll('svg').forEach(svg => svg.style.display = 'none');
+                if (theme === 'dark') {
+                    const darkIcon = modeBtn.querySelector('.dark-mode-icon');
+                    if (darkIcon) darkIcon.style.display = '';
+                } else {
+                    const lightIcon = modeBtn.querySelector('.light-mode-icon');
+                    if (lightIcon) lightIcon.style.display = '';
+                }
+            });
         }
     }
     function set(theme) {
@@ -167,12 +172,14 @@ const ThemeManager = (() => {
         const theme = stored || (prefersDark ? 'dark' : 'light');
         apply(theme);
         // wire button
-        const modeBtn = document.querySelector('.mode-btn');
-        if (modeBtn) {
-            modeBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                toggle();
-            });
+        const modeBtns = document.querySelectorAll('.mode-btn');
+        if (modeBtns) {
+            modeBtns.forEach(modeBtn => {
+                modeBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    toggle();
+                });
+            })
         }
     }
     return { init, set, get, toggle };
@@ -260,24 +267,55 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // sidebar-dropdown
-
-const sidebarDropdowns = document.querySelectorAll(".sidebar-dropdown")
+const sidebarDropdowns = document.querySelectorAll(".sidebar-dropdown");
 
 sidebarDropdowns.forEach(dropdownCon => {
+    if (!dropdownCon) return;
+
     const dropdownToggle = dropdownCon.querySelector(".sidebar-header");
+    if (!dropdownToggle) return;
 
     const dropdownIcon = dropdownToggle.querySelector(".sidebar-header-icon");
-
     const sidebarDropdownMenu = dropdownToggle.nextElementSibling;
 
-    if (sidebarDropdownMenu) {
-        dropdownToggle.addEventListener("click", () => {
-            sidebarDropdownMenu.classList.toggle("active");
-            dropdownIcon.classList.toggle("rotated");
-        })
+    // Toggle behavior when header is clicked
+    dropdownToggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (!sidebarDropdownMenu) return;
+        sidebarDropdownMenu.classList.toggle("active");
+        if (dropdownIcon) dropdownIcon.classList.toggle("rotated");
+    });
+
+    // If menu is initially active, ensure icon reflects that
+    if (sidebarDropdownMenu && sidebarDropdownMenu.classList.contains("active")) {
+        if (dropdownIcon) dropdownIcon.classList.add("rotated");
     }
 
-    if (sidebarDropdownMenu.classList.contains("active")) {
-        dropdownIcon.classList.add("rotated")
+    // Wire up sidebar item clicks and check for any pre-set active item
+    if (sidebarDropdownMenu) {
+        const sidebarLinks = sidebarDropdownMenu.querySelectorAll(".sidebar-item");
+
+        // Add click handlers for each link (if desired behavior is to toggle active on click)
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', (ev) => {
+                // Optionally prevent default navigation when using SPA; otherwise remove
+                // ev.preventDefault();
+
+                // Manage active classes: single active per dropdown
+                sidebarLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+
+                // Ensure parent dropdown remains open when a child is active
+                sidebarDropdownMenu.classList.add('active');
+                if (dropdownIcon) dropdownIcon.classList.add('rotated');
+            });
+        });
+
+        // If any child link is pre-marked active on load, open the dropdown
+        const anyActive = Array.from(sidebarLinks).some(l => l.classList.contains('active'));
+        if (anyActive) {
+            sidebarDropdownMenu.classList.add('active');
+            if (dropdownIcon) dropdownIcon.classList.add('rotated');
+        }
     }
-})
+});

@@ -13,9 +13,30 @@
 .stats-card.messages {
     grid-column: 1 /3;
     grid-row: 1 / 3;
-    
+
     .card-title {
         font-size: 18px;
+    }
+}
+
+@media (max-width: 1199px) {
+    .stats-row {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .stats-row {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .stats-card.recent-updates {
+        grid-row: 3 / 5 !important;
+        padding: 10px;
+    }
+
+    .stats-card {
+        grid-column: span 2 !important;
     }
 }
 
@@ -44,20 +65,19 @@
     color: var(--myadmin-white);
 }
 
-.stats-card.recent-updates  {
+.stats-card.recent-updates {
     grid-column: 3 / 4;
     grid-row: 1 / 3;
     padding: 10px;
 }
 
-
-
+/* recent-update-row */
 .recent-update-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    margin-top: 20px; 
+    margin-top: 20px;
 }
 
 .recent-update-item {

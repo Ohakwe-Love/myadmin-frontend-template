@@ -7,7 +7,7 @@
     <title>My Admin</title>
 
     <link rel="stylesheet" href="assets/css/layout.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/cms.css">
     <link rel="stylesheet" href="assets/css/topbar.css">
     <link rel="stylesheet" href="assets/css/animate.css">
 </head>
@@ -478,7 +478,7 @@
                     </div>
 
                     <div class="sidebar-nav sidebar-dropdown-menu active">
-                        <a href="index.html" class="sidebar-item active">
+                        <a href="index.html" class="sidebar-item">
                             <span class="sidebar-item-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                     <path
@@ -532,7 +532,7 @@
                     </div>
 
                     <div class="sidebar-nav sidebar-dropdown-menu">
-                        <a href="cms-home.html" class="sidebar-item">
+                        <a href="cms-home.html" class="sidebar-item active">
                             <span class="sidebar-item-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                     <path
@@ -835,7 +835,7 @@
                     </div>
 
                     <div class="sidebar-nav sidebar-dropdown-menu">
-                        <a href="cms-home.html" class="sidebar-item">
+                        <a href="cms-home.html" class="sidebar-item active">
                             <span class="sidebar-item-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                     <path
@@ -1040,269 +1040,93 @@
 
         <section class="page-content-wrapper">
             <div class="page-content-header">
-                <h2>Dashboard</h2>
+                <h2>Page content management system (CMS)</h2>
             </div>
 
             <div class="page-content">
-                <div class="stats">
-                    <div class="stats-row">
-                        <div class="stats-card card messages">
-                            <div class="card-heading">
-                                <div>
-                                    <h5 class="card-title">Messages</h5>
-                                </div>
-
-                                <div class="card-icon rounded">
-                                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
-                                        viewBox="0 0 24 24" data-astro-cid-wyj6lz6x="true">
-                                        <g fill="none" stroke="currentColor" stroke-linecap="round"
-                                            stroke-linejoin="round" stroke-width="1.5" color="currentColor">
-                                            <path d="m2 6l6.913 3.917c2.549 1.444 3.625 1.444 6.174 0L22 6"></path>
-                                            <path
-                                                d="M2.016 13.476c.065 3.065.098 4.598 1.229 5.733c1.131 1.136 2.705 1.175 5.854 1.254c1.94.05 3.862.05 5.802 0c3.149-.079 4.723-.118 5.854-1.254c1.131-1.135 1.164-2.668 1.23-5.733c.02-.986.02-1.966 0-2.952c-.066-3.065-.099-4.598-1.23-5.733c-1.131-1.136-2.705-1.175-5.854-1.254a115 115 0 0 0-5.802 0c-3.149.079-4.723.118-5.854 1.254c-1.131 1.135-1.164 2.668-1.23 5.733a69 69 0 0 0 0 2.952">
-                                            </path>
-                                        </g>
-                                    </svg>
-                                </div>
-                            </div>
-
-                            <div class="card-messages">
-                                <div class="msg-row">
-                                    <div class="msg-info">
-                                        <span class="msg-img">
-                                            <img src="assets/images/avatar/avatar-4.jpg" class="rounded" alt="">
-                                        </span>
-
-                                        <div>
-                                            <div class="text-highlight msg-sender">Tom Rayes</div>
-
-                                            <span class="senders-msg">
-                                                Hey! I am looking for the best template...
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <span class="time">58m ago</span>
-                                </div>
-                                <div class="msg-row">
-                                    <div class="msg-info">
-                                        <span class="msg-img">
-                                            <img src="assets/images/avatar/avatar-4.jpg" class="rounded" alt="">
-                                        </span>
-
-                                        <div>
-                                            <div class="text-highlight msg-sender">Tom Rayes</div>
-
-                                            <span class="senders-msg">
-                                                Hey! I am looking for the best template...
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <span class="time">58m ago</span>
-                                </div>
-                                <div class="msg-row">
-                                    <div class="msg-info">
-                                        <span class="msg-img">
-                                            <img src="assets/images/avatar/avatar-4.jpg" class="rounded" alt="">
-                                        </span>
-
-                                        <div>
-                                            <div class="text-highlight msg-sender">Tom Rayes</div>
-
-                                            <span class="senders-msg">
-                                                Hey! I am looking for the best template...
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <span class="time">58m ago</span>
-                                </div>
-                                <div class="msg-row">
-                                    <div class="msg-info">
-                                        <span class="msg-img">
-                                            <img src="assets/images/avatar/avatar-4.jpg" class="rounded" alt="">
-                                        </span>
-
-                                        <div>
-                                            <div class="text-highlight msg-sender">Tom Rayes</div>
-
-                                            <span class="senders-msg">
-                                                Hey! I am looking for the best template...
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <span class="time">58m ago</span>
-                                </div>
-                            </div>
-
-                            <div class="card-footer view-all-footer">
-                                <a href="">View All</a>
-                            </div>
-                        </div>
-                        <div class="stats-card card recent-updates">
-                            <div class="card-heading">
-                                <div>
-                                    <h5 class="card-title">Recent Updates</h5>
-                                </div>
-
-                                <div class="card-icon rounded">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                        <path
-                                            d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12H4C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C9.25022 4 6.82447 5.38734 5.38451 7.50024L8 7.5V9.5H2V3.5H4L3.99989 5.99918C5.82434 3.57075 8.72873 2 12 2ZM13 7L12.9998 11.585L16.2426 14.8284L14.8284 16.2426L10.9998 12.413L11 7H13Z">
-                                        </path>
-                                    </svg>
-                                </div>
-                            </div>
-
-                            <div class="recent-update-row">
-                                <div class="recent-update-item">
-                                    <p>You Change A background</p>
-
-                                    <span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                            <path
-                                                d="M5.63589 19.7784L4.22169 18.3644L15.657 6.92908L10.0712 6.92908V4.92908L19.0712 4.92908L19.0712 13.9291H17.0712L17.0712 8.34326L5.63589 19.7784Z">
-                                            </path>
-                                        </svg>
-                                    </span>
-                                </div>
-                                <div class="recent-update-item">
-                                    <p>You Change A background</p>
-
-                                    <span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                            <path
-                                                d="M5.63589 19.7784L4.22169 18.3644L15.657 6.92908L10.0712 6.92908V4.92908L19.0712 4.92908L19.0712 13.9291H17.0712L17.0712 8.34326L5.63589 19.7784Z">
-                                            </path>
-                                        </svg>
-                                    </span>
-                                </div>
-                                <div class="recent-update-item">
-                                    <p>You Change A background</p>
-
-                                    <span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                            <path
-                                                d="M5.63589 19.7784L4.22169 18.3644L15.657 6.92908L10.0712 6.92908V4.92908L19.0712 4.92908L19.0712 13.9291H17.0712L17.0712 8.34326L5.63589 19.7784Z">
-                                            </path>
-                                        </svg>
-                                    </span>
-                                </div>
-                                <div class="recent-update-item">
-                                    <p>You Change A background</p>
-
-                                    <span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                            <path
-                                                d="M5.63589 19.7784L4.22169 18.3644L15.657 6.92908L10.0712 6.92908V4.92908L19.0712 4.92908L19.0712 13.9291H17.0712L17.0712 8.34326L5.63589 19.7784Z">
-                                            </path>
-                                        </svg>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="stats-card card visitors">
-                            <div class="card-heading">
-                                <div>
-                                    <h5 class="card-title">Visitors Today</h5>
-                                </div>
-
-                                <div class="card-icon rounded">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" class="feather feather-users align-middle">
-                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                        <circle cx="9" cy="7" r="4"></circle>
-                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                                    </svg>
-                                </div>
-                            </div>
-
-                            <h1 class="">17.212</h1>
-                            <div class="mb-0">
-                                <span class="text-success">5.50%
-                                </span>
-                                More visitors than usual
-                            </div>
-                        </div>
-
-                        <div class="stats-card card">
-                            <div class="card-heading">
-                                <div>
-                                    <h5 class="card-title">Visitors Today</h5>
-                                </div>
-
-                                <div class="card-icon rounded">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" class="feather feather-users align-middle">
-                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                        <circle cx="9" cy="7" r="4"></circle>
-                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                                    </svg>
-                                </div>
-                            </div>
-
-                            <h1 class="">17.212</h1>
-                            <div class="mb-0">
-                                <span class="text-success">5.50%
-                                </span>
-                                More visitors than usual
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Quick Actions -->
-                <div class="quick-actions">
-                    <div class="group-header">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                        </svg>
-                        <h2>Quick Actions</h2>
+                <div class="page-related-content">
+                    <div class="page-related-header">
+                        <h2>Home Page</h2>
                     </div>
 
-                    <div class="quick-actions-row">
-                        <!-- <a href="" class="quick-actions-card card">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <circle cx="9" cy="21" r="1"></circle>
-                                <circle cx="20" cy="21" r="1"></circle>
-                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                            </svg>
-                            <div>shop now</div>
-                        </a> -->
+                    <div class="cms-wrapper">
+                        <div class="cms-con">
+                            <div class="cms-header">
+                                <h2>Hero</h2>
+                            </div>
 
-                        <a href="" class="quick-actions-card card" target="_blank" rel="noopener noreferrer">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12.1597 16C10.1243 16 8.29182 16.8687 7.01276 18.2556C8.38039 19.3474 10.114 20 12 20C13.9695 20 15.7727 19.2883 17.1666 18.1081C15.8956 16.8074 14.1219 16 12.1597 16ZM12 4C7.58172 4 4 7.58172 4 12C4 13.8106 4.6015 15.4807 5.61557 16.8214C7.25639 15.0841 9.58144 14 12.1597 14C14.6441 14 16.8933 15.0066 18.5218 16.6342C19.4526 15.3267 20 13.7273 20 12C20 7.58172 16.4183 4 12 4ZM12 5C14.2091 5 16 6.79086 16 9C16 11.2091 14.2091 13 12 13C9.79086 13 8 11.2091 8 9C8 6.79086 9.79086 5 12 5ZM12 7C10.8954 7 10 7.89543 10 9C10 10.1046 10.8954 11 12 11C13.1046 11 14 10.1046 14 9C14 7.89543 13.1046 7 12 7Z">
-                                </path>
-                            </svg>
-                            <div>edit profile</div>
-                        </a>
+                            <table>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Action</th>
+                                </tr>
 
-                        <a href="#" class="quick-actions-card card">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M12 2.58582L18.2071 8.79292L16.7929 10.2071L13 6.41424V16H11V6.41424L7.20711 10.2071L5.79289 8.79292L12 2.58582ZM3 18V14H5V18C5 18.5523 5.44772 19 6 19H18C18.5523 19 19 18.5523 19 18V14H21V18C21 19.6569 19.6569 21 18 21H6C4.34315 21 3 19.6569 3 18Z">
-                                </path>
-                            </svg>
-                            <div>share link</div>
-                        </a>
+                                <tr>
+                                    <td>
+                                        Hi, I'm Lovely. A software engineer.
+                                    </td>
+                                    <td>
+                                        Mainly working in the JavaScript ecosystem, I'm a dedicated problem-solver who
+                                        thrives on learning and building.
+                                    </td>
+                                    <td>
+                                        <button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                fill="currentColor">
+                                                <path
+                                                    d="M16.7574 2.99678L14.7574 4.99678H5V18.9968H19V9.23943L21 7.23943V19.9968C21 20.5491 20.5523 20.9968 20 20.9968H4C3.44772 20.9968 3 20.5491 3 19.9968V3.99678C3 3.4445 3.44772 2.99678 4 2.99678H16.7574ZM20.4853 2.09729L21.8995 3.5115L12.7071 12.7039L11.2954 12.7064L11.2929 11.2897L20.4853 2.09729Z">
+                                                </path>
+                                            </svg></button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
+
+                    <div class="cms-wrapper">
+                        <div class="cms-con">
+                            <div class="cms-header">
+                                <h2>About</h2>
+                            </div>
+
+                            <table>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>sub-title</th>
+                                    <th>Description</th>
+                                    <th>Action</th>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        Learning, Building, and Documenting
+                                    </td>
+                                    <td>Learning, Building, and Documenting</td>
+                                    <td>
+                                        <ul>
+                                            <li>I have started my career as an IoT engineer, diving deep into the world of interconnected devices and cutting-edge technology. However, my passion for crafting meaningful and engaging user experiences led me to switch careers and pursue product design.</li>
+                                            <li>When I'm not immersed in design projects, you'll likely find me exploring new cities with my camera, capturing the beauty of everyday life. Balancing work with personal adventures keeps me inspired and fuels my creativity.</li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                fill="currentColor">
+                                                <path
+                                                    d="M16.7574 2.99678L14.7574 4.99678H5V18.9968H19V9.23943L21 7.23943V19.9968C21 20.5491 20.5523 20.9968 20 20.9968H4C3.44772 20.9968 3 20.5491 3 19.9968V3.99678C3 3.4445 3.44772 2.99678 4 2.99678H16.7574ZM20.4853 2.09729L21.8995 3.5115L12.7071 12.7039L11.2954 12.7064L11.2929 11.2897L20.4853 2.09729Z">
+                                                </path>
+                                            </svg></button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    
                 </div>
             </div>
 
             <div class="page-content-footer">
                 <p><span>Year</span> &copy; By <a href="">Lovely</a></p>
-
                 <p>All rights reserved.</p>
             </div>
         </section>
