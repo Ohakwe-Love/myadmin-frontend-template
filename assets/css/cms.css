@@ -1,5 +1,6 @@
 .page-related-header {
     margin-bottom: 15px;
+
     h2 {
         font-size: 25px;
     }
@@ -13,22 +14,6 @@
     margin-bottom: 20px;
 }
 
-.cms-wrapper:nth-child(odd) {
-    background: var(--myadmin-gray-900);
-    color: var(--myadmin-white);
-    
-    th, td {
-        padding: 10px;
-        border: 1px solid var(--myadmin-white);
-    }
-
-    button {
-        color: var(--myadmin-white);
-        svg {
-        }
-    }
-}
-
 .cms-header {
     margin-bottom: 10px;
 }
@@ -36,15 +21,33 @@
 .cms-wrapper table {
     width: 100%;
     border-collapse: collapse;
-    /* background-color: orange; */
+    table-layout: fixed;
     th {
         text-align: left;
         text-transform: capitalize;
     }
 
-    th, td {
+    th:last-child,
+    td:last-child {
+        width: 100px;
+        min-width: 100px;
+        max-width: 100px;
+        text-align: center;
+    }
+    
+    .view-mode{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    th,
+    td {
         padding: 10px;
         border: 1px solid var(--myadmin-border-color);
+        overflow: hidden;
+        word-break: break-word;
+        vertical-align: top;
     }
 
     td ul {
@@ -55,4 +58,71 @@
         flex-direction: column;
         gap: 10px;
     }
+}
+
+.cms-wrapper .edit-btn,
+.cms-wrapper .cancel-btn,
+.cms-wrapper .save-btn,
+.cms-wrapper .delete-btn {
+    padding: 5px 10px;
+    border-radius: var(--myadmin-border-radius);
+    color: var(--myadmin-white);
+    cursor: pointer;
+    border: none;
+    background: var(--myadmin-indigo);
+}
+
+.cms-wrapper .delete-btn,
+.cms-wrapper .cancel-btn {
+    background: var(--myadmin-red);
+}
+
+.cms-wrapper .save-btn {
+    background: var(--myadmin-green);
+}
+
+.cms-wrapper .edit-input,
+.cms-wrapper .edit-textarea {
+    width: 100%;
+    box-sizing: border-box;
+    background: var(--myadmin-secondary-bg);
+    border: 1px solid var(--myadmin-blue);
+    color: inherit;
+    padding: 8px;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.cms-wrapper .edit-textarea {
+    min-height: 80px;
+    max-height: 200px;
+    resize: vertical;
+    overflow: auto;
+}
+
+.cms-wrapper .edit-input:focus,
+.cms-wrapper .edit-textarea:focus {
+    outline: none;
+    border-color: var(--myadmin-focus-ring-color);
+}
+
+.cms-wrapper .view-mode {
+    display: block;
+}
+
+.cms-wrapper .edit-mode {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.cms-wrapper tr.editing .view-mode {
+    display: none;
+}
+
+.cms-wrapper tr.editing .edit-mode {
+    display: flex;
 }

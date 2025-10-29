@@ -68,6 +68,10 @@
     padding-top: 30px;
 }
 
+.inbox .msg-row {
+    width: 100%;
+}
+
 .single-message-view {
     display: grid;
     width: 100%;
@@ -89,8 +93,14 @@
     display: flex;
     gap: 10px;
     align-items: center;
-    .msg-img {
-        width: 50px;
+
+}
+
+.msg-img {
+    width: 40px !important;
+
+    img {
+        width: 100%;
     }
 }
 
@@ -113,7 +123,7 @@
         color: var(--myadmin-white);
 
         .time {
-            font-size: 10px;
+            font-size: 10px !important;
             position: absolute;
             bottom: 0px;
             color: var(--myadmin-gray);
@@ -129,7 +139,7 @@
     .msg-right {
         margin-left: auto;
         background: var(--myadmin-indigo);
-        
+
         .time {
             color: var(--myadmin-white);
         }
@@ -156,6 +166,7 @@
         background: transparent;
         height: 100%;
         position: relative;
+
         input {
             padding: 0 30px;
             border: 1px solid var(--myadmin-border-color);
@@ -165,7 +176,7 @@
             color: var(--myadmin-body-color);
             transition: 0.3s ease-in-out;
         }
-        
+
         input::placeholder {
             color: var(--myadmin-body-color);
         }
@@ -188,5 +199,15 @@
                 height: 25px;
             }
         }
+    }
+}
+
+@media (max-width: 767px) {
+    .messages-container.desktop-view {
+        grid-template-columns: 1fr;
+    }
+
+    .single-message-view {
+        display: none;
     }
 }
