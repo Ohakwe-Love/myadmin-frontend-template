@@ -6,7 +6,6 @@
     }
 }
 
-
 .cms-wrapper {
     border-radius: var(--myadmin-border-radius);
     background: var(--myadmin-secondary-bg);
@@ -22,6 +21,7 @@
     width: 100%;
     border-collapse: collapse;
     table-layout: fixed;
+
     th {
         text-align: left;
         text-transform: capitalize;
@@ -33,12 +33,6 @@
         min-width: 100px;
         max-width: 100px;
         text-align: center;
-    }
-    
-    .view-mode{
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
 
     th,
@@ -97,7 +91,7 @@
 .cms-wrapper .edit-textarea {
     min-height: 80px;
     max-height: 200px;
-    resize: vertical;
+    resize: none;
     overflow: auto;
 }
 
@@ -109,6 +103,7 @@
 
 .cms-wrapper .view-mode {
     display: block;
+    text-align: left !important;
 }
 
 .cms-wrapper .edit-mode {
@@ -125,4 +120,75 @@
 
 .cms-wrapper tr.editing .edit-mode {
     display: flex;
+}
+
+/* skills */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.2rem;
+    position: relative;
+}
+
+.skill-card {
+    position: relative;
+    background: var(--);
+    border: 1px solid var(--myadmin-border-color);
+    border-radius: 24px;
+    padding: 1rem;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.skill-icon {
+    width: 70px;
+    height: 70px;
+    background: var(--background-3);
+    border: 1px solid var(--bd-primary);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--myadmin-menu-bg);
+    color: var(--myadmin-menu-item-color);
+}
+
+.skill-icon img {
+    width: 60%;
+}
+
+.skill-card:hover .icon-glow {
+    opacity: 0.6;
+}
+
+.skill-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--contrast);
+}
+
+.skill-description {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+@media (max-width: 900px) {
+    .skills-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
 }

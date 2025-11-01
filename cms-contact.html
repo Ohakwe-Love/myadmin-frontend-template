@@ -7,7 +7,7 @@
     <title>My Admin</title>
 
     <link rel="stylesheet" href="assets/css/layout.css">
-    <link rel="stylesheet" href="assets/css/messages.css">
+    <link rel="stylesheet" href="assets/css/cms.css">
     <link rel="stylesheet" href="assets/css/topbar.css">
     <link rel="stylesheet" href="assets/css/animate.css">
 </head>
@@ -476,8 +476,8 @@
                         </span>
                     </div>
 
-                    <div class="sidebar-nav sidebar-dropdown-menu active">
-                        <a href="index.html" class="sidebar-item active">
+                    <div class="sidebar-nav sidebar-dropdown-menu">
+                        <a href="index.html" class="sidebar-item">
                             <span class="sidebar-item-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                     <path
@@ -543,7 +543,7 @@
                             <span class="sidebar-item-text">Home</span>
                         </a>
 
-                        <a href="cms-contact.html" class="sidebar-item">
+                        <a href="cms-contact.html" class="sidebar-item active">
                             <span class="sidebar-item-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                     <path
@@ -845,7 +845,7 @@
                             <span class="sidebar-item-text">Home</span>
                         </a>
 
-                        <a href="cms-contact.html" class="sidebar-item">
+                        <a href="cms-contact.html" class="sidebar-item active">
                             <span class="sidebar-item-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                     <path
@@ -1040,123 +1040,90 @@
 
         <section class="page-content-wrapper">
             <div class="page-content-header">
-                <h2>Messages</h2>
+                <h2>Page content management system (CMS)</h2>
             </div>
 
             <div class="page-content">
-                <div class="messages-container desktop-view">
-                    <div class="message-preview messages-col-left">
-                        <div class="search-message">
-                            <span class="search-message-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                    <path
-                                        d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z">
-                                    </path>
-                                </svg>
-                            </span>
-                            <input type="text" placeholder="Search...">
-                        </div>
-
-                        <div class="inbox">
-                            <a href="" class="msg-row">
-                                <div class="msg-info">
-                                    <span class="msg-img">
-                                        <img src="assets/images/avatar/avatar-4.jpg" class="rounded" alt="">
-                                    </span>
-
-                                    <div>
-                                        <div class="text-highlight msg-sender">Tom Rayes</div>
-
-                                        <span class="senders-msg">
-                                            Hey! I am looking for the best template...
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <span class="time">58m ago</span>
-                            </a>
-                            <a href="" class="msg-row">
-                                <div class="msg-info">
-                                    <span class="msg-img">
-                                        <img src="assets/images/avatar/avatar-4.jpg" class="rounded" alt="">
-                                    </span>
-
-                                    <div>
-                                        <div class="text-highlight msg-sender">Tom Rayes</div>
-
-                                        <span class="senders-msg">
-                                            Hey! I am looking for the best template...
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <span class="time">58m ago</span>
-                            </a>
-                            <a href="" class="msg-row">
-                                <div class="msg-info">
-                                    <span class="msg-img">
-                                        <img src="assets/images/avatar/avatar-4.jpg" class="rounded" alt="">
-                                    </span>
-
-                                    <div>
-                                        <div class="text-highlight msg-sender">Tom Rayes</div>
-
-                                        <span class="senders-msg">
-                                            Hey! I am looking for the best template...
-                                        </span>
-                                    </div>
-                                </div>
-                                <span class="time">58m ago</span>
-                            </a>
-                            <a href="" class="msg-row">
-                                <div class="msg-info">
-                                    <span class="msg-img">
-                                        <img src="assets/images/avatar/avatar-4.jpg" class="rounded" alt="">
-                                    </span>
-
-                                    <div>
-                                        <div class="text-highlight msg-sender">Tom Rayes</div>
-
-                                        <span class="senders-msg">
-                                            Hey! I am looking for the best template...
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <span class="time">58m ago</span>
-                            </a>
-                        </div>
+                <div class="page-related-content">
+                    <div class="page-related-header">
+                        <h2>Contact Page</h2>
                     </div>
 
-                    <div class="single-message-view">
-                        <div class="message-header">
-                            <div class="message-user-info">
-                                <span class="msg-img">
-                                    <img src="assets/images/avatar/avatar-4.jpg" class="rounded" alt="">
-                                </span>
-                                <span>Charles Dickens</span>
+                    <div class="cms-wrapper">
+                        <div class="cms-con">
+                            <div class="cms-header">
+                                <h2>About</h2>
                             </div>
-                        </div>
 
-                        <div class="message-wall">
-                            <div class="msg-left msg">
-                                Hey there!! the programme I'm working on needs...
+                            <table>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>sub-title</th>
+                                    <th>Description</th>
+                                    <th>Action</th>
+                                </tr>
 
-                                <span class="time">12:30pm</span>
-                            </div>
-                            <div class="msg-right msg">
-                                Abeg work ooo
-                                <span class="time">12:30pm</span>
-                            </div>
-                        </div>
+                                <tr data-id="about-1">
+                                    <td>
+                                        <div class="view-mode">Learning, Building, and Documenting</div>
+                                        <input type="text" class="edit-mode edit-input"
+                                            value="Learning, Building, and Documenting">
+                                    </td>
+                                    <td>
+                                        <div class="view-mode">Learning, Building, and Documenting</div>
+                                        <input type="text" class="edit-mode edit-input"
+                                            value="Learning, Building, and Documenting">
+                                    </td>
+                                    <td>
+                                        <div class="view-mode">
+                                            <ul>
+                                                <li>I have started my career as an IoT engineer, diving deep into the
+                                                    world of interconnected devices and cutting-edge technology.
+                                                    However, my passion for crafting meaningful and engaging user
+                                                    experiences led me to switch careers and pursue product design.</li>
+                                                <li>When I'm not immersed in design projects, you'll likely find me
+                                                    exploring new cities with my camera, capturing the beauty of
+                                                    everyday life. Balancing work with personal adventures keeps me
+                                                    inspired and fuels my creativity.</li>
+                                            </ul>
+                                        </div>
+                                        <textarea
+                                            class="edit-mode edit-textarea">I have started my career as an IoT engineer, diving deep into the world of interconnected devices and cutting-edge technology. However, my passion for crafting meaningful and engaging user experiences led me to switch careers and pursue product design.
 
-                        <div class="send-message-actions">
-                            <form action="">
-                                <input type="text" placeholder="Message">
-                                <button>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M3 12.9999H9V10.9999H3V1.84558C3 1.56944 3.22386 1.34558 3.5 1.34558C3.58425 1.34558 3.66714 1.36687 3.74096 1.40747L22.2034 11.5618C22.4454 11.6949 22.5337 11.9989 22.4006 12.2409C22.3549 12.324 22.2865 12.3924 22.2034 12.4381L3.74096 22.5924C3.499 22.7255 3.19497 22.6372 3.06189 22.3953C3.02129 22.3214 3 22.2386 3 22.1543V12.9999Z"></path></svg>
-                                </button>
-                            </form>
+When I'm not immersed in design projects, you'll likely find me exploring new cities with my camera, capturing the beauty of everyday life. Balancing work with personal adventures keeps me inspired and fuels my creativity.</textarea>
+                                    </td>
+                                    <td>
+                                        <div class="view-mode">
+                                            <button class="edit-btn" type="button" aria-label="Edit">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                    fill="currentColor">
+                                                    <path
+                                                        d="M16.7574 2.99678L14.7574 4.99678H5V18.9968H19V9.23943L21 7.23943V19.9968C21 20.5491 20.5523 20.9968 20 20.9968H4C3.44772 20.9968 3 20.5491 3 19.9968V3.99678C3 3.4445 3.44772 2.99678 4 2.99678H16.7574ZM20.4853 2.09729L21.8995 3.5115L12.7071 12.7039L11.2954 12.7064L11.2929 11.2897L20.4853 2.09729Z">
+                                                    </path>
+                                                </svg>
+                                            </button>
+                                        </div>
+
+                                        <div class="edit-mode action-buttons">
+                                            <button class="save-btn" type="button" aria-label="Save">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                    fill="currentColor">
+                                                    <path d="M9 16.172L4.828 12l-1.414 1.414L9 19 21 7l-1.414-1.414z">
+                                                    </path>
+                                                </svg>
+                                            </button>
+                                            <button class="cancel-btn" type="button" aria-label="Cancel">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                    fill="currentColor">
+                                                    <path
+                                                        d="M18.364 5.636l-1.414-1.414L12 9.172 7.05 4.222 5.636 5.636 10.586 10.586 5.636 15.536l1.414 1.414L12 12.999l4.95 4.95 1.414-1.414L13.414 10.586z">
+                                                    </path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -1170,6 +1137,7 @@
     </main>
 
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/cms.js"></script>
 </body>
 
 </html>
