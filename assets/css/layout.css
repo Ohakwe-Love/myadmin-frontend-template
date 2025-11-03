@@ -269,6 +269,7 @@
     --myadmin-focus-ring-width: 0;
     --myadmin-focus-ring-opacity: 0.25;
     --myadmin-focus-ring-color: rgba(52, 140, 212, 0.25);
+    --myadmin-input-bg: #eaeaea;
     --myadmin-form-valid-color: #3ec396;
     --myadmin-form-valid-border-color: #3ec396;
     --myadmin-form-invalid-color: #f36270;
@@ -326,6 +327,7 @@
     --myadmin-border-color: #37394d;
     --myadmin-border-color-translucent: #323d4b;
     --myadmin-form-valid-color: #8bdbc0;
+    --myadmin-input-bg: #3b3b3b;
     --myadmin-form-valid-border-color: #8bdbc0;
     --myadmin-form-invalid-color: #f8a1a9;
     --myadmin-form-invalid-border-color: #f8a1a9;
@@ -1140,6 +1142,8 @@ a.dropdown-item {
 }
 
 .cta-btn {
+    border: none;
+    cursor: pointer;
     padding: 10px;
     background: var(--myadmin-success);
     color: var(--myadmin-white);
@@ -1206,7 +1210,6 @@ a.dropdown-item {
 
 .form {
     max-width: 500px;
-    margin: 40px auto;
     background-color: var(--myadmin-secondary-bg);
     border-radius: 10px;
     color: var(--myadmin-body-color);
@@ -1250,12 +1253,92 @@ a.dropdown-item {
     }
 
     input, textarea {
-        border: 2px solid var(--myadmin-border-color);
         display: block;
         height: 45px;
         padding: 10px;
         width: 100%;
-        background: var(--myadmin-primary-bg-subtle);
+        background: var(--myadmin-input-bg);
+        color: var(--myadmin-body-color);
+        border: 1px solid transparent;
+        outline: none;
+        transition: 0.5s ease-in-out;
+    }
+
+    input.error, textarea.error, .skill-icon-input-group.error {
+        border-color: var(--myadmin-form-invalid-border-color);
+        color: var(--myadmin-form-invalid-color);
+    }
+
+    input.success, textarea.success, .skill-icon-input-group.success {
+        border-color: var(--myadmin-form-valid-border-color);
+        color: var(--myadmin-form-valid-color);
+    }
+
+    input::placeholder {
+        color: var(--myadmin-body-color);
+    }
+
+    input[type="file"] {
+        display: none;
+    }
+
+    textarea {
+        height: auto;
+        min-height: 100px;
+        resize: none;
+    }
+
+    .form-group.skill-icon-input-group {
+        background: var(--myadmin-input-bg);
+        height: 80px;
+        border: 1px solid transparent;
+
+        label {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+        }
+
+        label span {
+            width: 40px;
+            height: 40px;
+
+            svg {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        label::after {
+            content: "";
+        }
+    }
+
+    button.submit-btn {
+        background: var(--myadmin-blue);
+        border: none;
+        color: var(--myadmin-white);
+        padding: 12px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+        width: 100%;
+        font-size: 12px;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+    
+    button.submit-btn:disabled, button.submit-btn.disabled {
+        opacity: 0.6;
+    }
+
+    button.submit-btn.disabled:hover {
+        cursor: not-allowed;
     }
 }
 

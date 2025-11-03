@@ -115,3 +115,89 @@ document.addEventListener('keydown', (e) => {
         if (saveBtn) saveEdit(saveBtn);
     }
 });
+
+// toggle form 
+const addSkillFormToggle = document.querySelector(".addSkillFormToggle");
+const addSkillFormWrapper = document.querySelector(".addSkillFormWrapper");
+
+function toggleForm() {
+    if (!addSkillFormWrapper || !addSkillFormToggle) return;
+
+    const isCollapsed = addSkillFormWrapper.classList.toggle("collapsed");
+
+    if (isCollapsed) {
+        // If the form is now collapsed
+        addSkillFormToggle.classList.remove("cancel");
+        addSkillFormToggle.textContent = "Add Skill +";
+    } else {
+        // If the form is expanded
+        addSkillFormToggle.classList.add("cancel");
+        addSkillFormToggle.textContent = "Cancel";
+    }
+}
+
+addSkillFormToggle.addEventListener("click", toggleForm);
+
+// // Select elements
+// const addSkillForm = document.querySelector(".addSkillForm");
+// const addSkillTitleInput = document.getElementById("skill-title");
+// const addSkillDescInput = document.getElementById("skill-description");
+// const addSkillIconInput = document.getElementById("skill-icon");
+// const addSkillIconGroup = document.querySelector(".skill-icon-input-group");
+// const submitSkillBtn = addSkillForm.querySelector(".submit-btn");
+
+// // Utility: set error/success class
+// function setValidationState(element, isValid) {
+//     element.classList.remove("error", "success");
+//     element.classList.add(isValid ? "success" : "error");
+// }
+
+// // Validation logic
+// function validateForm() {
+//     const titleValid = addSkillTitleInput.value.trim().length > 0;
+//     const descLength = addSkillDescInput.value.trim().length;
+//     const descValid = descLength >= 10 && descLength <= 200;
+//     const iconValid = addSkillIconInput.files.length > 0; // true if file selected
+
+//     // Set input states
+//     setValidationState(addSkillTitleInput, titleValid);
+//     setValidationState(addSkillDescInput, descValid);
+//     setValidationState(addSkillIconGroup, iconValid);
+
+//     // Enable/disable submit button
+//     if (titleValid && descValid && iconValid) {
+//         submitSkillBtn.classList.remove("disabled");
+//         submitSkillBtn.disabled = false;
+//     } else {
+//         submitSkillBtn.classList.add("disabled");
+//         submitSkillBtn.disabled = true;
+//     }
+// }
+
+// // Real-time validation
+// [addSkillTitleInput, addSkillDescInput, addSkillIconInput].forEach((input) => {
+//     input.addEventListener("input", validateForm);
+//     input.addEventListener("change", validateForm);
+// });
+
+// // Final check before submit
+// addSkillForm.addEventListener("submit", (e) => {
+//     validateForm();
+//     if (submitSkillBtn.disabled) {
+//         e.preventDefault();
+//         alert("Please fill out all required fields correctly.");
+//     }
+// });
+
+
+// importing form validation
+import { setupFormValidation } from './formValidation.js';
+
+setupFormValidation('.addSkillForm', {
+    'skill-title': (input) => input.value.trim().length > 0,
+    'skill-description': (input) => {
+        const len = input.value.trim().length;
+        return len >= 100 && len <= 200;
+    },
+    'skill-icon': (input) => input.files.length > 0
+});
