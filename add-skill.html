@@ -588,7 +588,7 @@
                             <span class="sidebar-item-text">Stacks</span>
                         </a>
 
-                        <a href="cms-skills.html" class="sidebar-item">
+                        <a href="cms-skills.html" class="sidebar-item active">
                             <span class="sidebar-item-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     id="Person-Play-Fill--Streamline-Outlined-Fill-Material">
@@ -600,7 +600,7 @@
                             <span class="sidebar-item-text">Skills</span>
                         </a>
 
-                        <a href="cms-services.html" class="sidebar-item active">
+                        <a href="cms-services.html" class="sidebar-item">
                             <span class="sidebar-item-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                     <path fill="currentColor" fill-rule="evenodd"
@@ -834,7 +834,7 @@
                     </div>
 
                     <div class="sidebar-nav sidebar-dropdown-menu">
-                        <a href="cms-home.html" class="sidebar-item">
+                        <a href="cms-home.html" class="sidebar-item active">
                             <span class="sidebar-item-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                     <path
@@ -904,7 +904,7 @@
                             <span class="sidebar-item-text">Stacks</span>
                         </a>
 
-                        <a href="cms-skills.html" class="sidebar-item">
+                        <a href="cms-skills.html" class="sidebar-item active">
                             <span class="sidebar-item-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     id="Person-Play-Fill--Streamline-Outlined-Fill-Material">
@@ -1041,177 +1041,50 @@
 
         <section class="page-content-wrapper">
             <div class="page-content-header">
-                <h2>Page content management system (CMS)</h2>
+                <h2>Add Skill</h2>
             </div>
 
             <div class="page-content">
                 <div class="page-related-content">
-                    <div class="page-related-header">
-                        <h2>Services</h2>
+                    <div class="formWrapper">
+                        <form action="" class="form add-form" enctype="multipart/form-data" autocomplete="on">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="skill-title" class="important">skill title</label>
+                                    <input type="text" name="skill-title" id="skill-title" placeholder="Problem-Solving"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="skill-description" class="important">skill description</label>
+                                    <textarea name="skill-description" id="skill-description" maxlength="200"
+                                        minlength="100" required
+                                        wrap="soft">Approach complex technical challenges with a structured...</textarea>
+                                </div>
 
-                        <a href="add-service.html" class="cta-btn">Add Service +</a>
-                    </div>
+                                <div class="form-group file-input-group">
+                                    <label for="skill-icon" class="important">
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                fill="currentColor">
+                                                <path
+                                                    d="M21 15V18H24V20H21V23H19V20H16V18H19V15H21ZM21.0082 3C21.556 3 22 3.44495 22 3.9934L22.0007 13.3417C21.3749 13.1204 20.7015 13 20 13V5H4L4.001 19L13.2929 9.70715C13.6528 9.34604 14.22 9.31823 14.6123 9.62322L14.7065 9.70772L18.2521 13.2586C15.791 14.0069 14 16.2943 14 19C14 19.7015 14.1204 20.3749 14.3417 21.0007L2.9918 21C2.44405 21 2 20.5551 2 20.0066V3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082ZM8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7Z">
+                                                </path>
+                                            </svg>
+                                        </span>
+                                        Upload Skill Icon
+                                    </label>
+                                    <input type="file" id="skill-icon" name="skill-icon">
 
-                    <div class="services-grid">
-                        <div class="service-card card" data-service="1">
-                            <div class="service-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="16 18 22 12 16 6"></polyline>
-                                    <polyline points="8 6 2 12 8 18"></polyline>
-                                </svg>
+                                    <div class="preview-selected-img">
+                                        <img src="" alt="">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="form-btn edit-btn">Save</button>
+                                </div>
                             </div>
-                            <h3 class="service-title">Web Development</h3>
-                            <p class="service-description">Cutting-edge web applications engineered with modern
-                                frameworks
-                                and scalable architectures that deliver exceptional performance.</p>
-                            <ul class="service-features">
-                                <li>Custom full-stack development</li>
-                                <li>Progressive web applications</li>
-                                <li>API integration & optimization</li>
-                                <li>Performance & SEO mastery</li>
-                            </ul>
-
-
-                            <div class="actions">
-                                <a href="edit-skill.html" class="edit-btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                        <path
-                                            d="M16.7574 2.99678L14.7574 4.99678H5V18.9968H19V9.23943L21 7.23943V19.9968C21 20.5491 20.5523 20.9968 20 20.9968H4C3.44772 20.9968 3 20.5491 3 19.9968V3.99678C3 3.4445 3.44772 2.99678 4 2.99678H16.7574ZM20.4853 2.09729L21.8995 3.5115L12.7071 12.7039L11.2954 12.7064L11.2929 11.2897L20.4853 2.09729Z">
-                                        </path>
-                                    </svg>
-                                </a>
-
-                                <button class="delete-btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                        <path
-                                            d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z">
-                                        </path>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="service-card card" data-service="4">
-                            <div class="service-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path
-                                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-                                    <polyline points="7.5 4.21 12 6.81 16.5 4.21" />
-                                    <polyline points="7.5 19.79 7.5 14.6 3 12" />
-                                    <polyline points="21 12 16.5 14.6 16.5 19.79" />
-                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
-                                    <line x1="12" y1="22.08" x2="12" y2="12" />
-                                </svg>
-                            </div>
-                            <h3 class="service-title">Digital Products</h3>
-                            <p class="service-description">End-to-end product development from conception to launch,
-                                building scalable solutions that solve real problems and drive growth.</p>
-                            <ul class="service-features">
-                                <li>MVP development & testing</li>
-                                <li>Product roadmap strategy</li>
-                                <li>Continuous iteration & scaling</li>
-                                <li>Analytics & optimization</li>
-                            </ul>
-
-
-                            <div class="actions">
-                                <a href="edit-skill.html" class="edit-btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                        <path
-                                            d="M16.7574 2.99678L14.7574 4.99678H5V18.9968H19V9.23943L21 7.23943V19.9968C21 20.5491 20.5523 20.9968 20 20.9968H4C3.44772 20.9968 3 20.5491 3 19.9968V3.99678C3 3.4445 3.44772 2.99678 4 2.99678H16.7574ZM20.4853 2.09729L21.8995 3.5115L12.7071 12.7039L11.2954 12.7064L11.2929 11.2897L20.4853 2.09729Z">
-                                        </path>
-                                    </svg>
-                                </a>
-
-                                <button class="delete-btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                        <path
-                                            d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z">
-                                        </path>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="service-card card" data-service="6">
-                            <div class="service-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-                                </svg>
-                            </div>
-                            <h3 class="service-title">Consulting</h3>
-                            <p class="service-description">Strategic guidance and technical expertise to navigate
-                                complex
-                                digital challenges and accelerate your business transformation.</p>
-                            <ul class="service-features">
-                                <li>Technical architecture review</li>
-                                <li>Digital strategy planning</li>
-                                <li>Team augmentation</li>
-                                <li>Process optimization</li>
-                            </ul>
-
-                            <div class="actions">
-                                <a href="edit-skill.html" class="edit-btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                        <path
-                                            d="M16.7574 2.99678L14.7574 4.99678H5V18.9968H19V9.23943L21 7.23943V19.9968C21 20.5491 20.5523 20.9968 20 20.9968H4C3.44772 20.9968 3 20.5491 3 19.9968V3.99678C3 3.4445 3.44772 2.99678 4 2.99678H16.7574ZM20.4853 2.09729L21.8995 3.5115L12.7071 12.7039L11.2954 12.7064L11.2929 11.2897L20.4853 2.09729Z">
-                                        </path>
-                                    </svg>
-                                </a>
-
-                                <button class="delete-btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                        <path
-                                            d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z">
-                                        </path>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="service-card card" data-service="8">
-                            <div class="service-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path>
-                                    <polyline points="14 2 14 8 20 8"></polyline>
-                                    <line x1="16" y1="13" x2="8" y2="13"></line>
-                                    <line x1="16" y1="17" x2="8" y2="17"></line>
-                                    <line x1="10" y1="9" x2="8" y2="9"></line>
-                                </svg>
-                            </div>
-                            <h3 class="service-title">Technical Documentation</h3>
-                            <p class="service-description">Creating clear, comprehensive, and maintainable documentation
-                                for
-                                APIs, codebases, and technical processes.</p>
-                            <ul class="service-features">
-                                <li>API reference guides</li>
-                                <li>Developer handbooks</li>
-                                <li>System architecture diagrams</li>
-                                <li>User manuals & tutorials</li>
-                            </ul>
-
-                            <div class="actions">
-                                <a href="edit-skill.html" class="edit-btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                        <path
-                                            d="M16.7574 2.99678L14.7574 4.99678H5V18.9968H19V9.23943L21 7.23943V19.9968C21 20.5491 20.5523 20.9968 20 20.9968H4C3.44772 20.9968 3 20.5491 3 19.9968V3.99678C3 3.4445 3.44772 2.99678 4 2.99678H16.7574ZM20.4853 2.09729L21.8995 3.5115L12.7071 12.7039L11.2954 12.7064L11.2929 11.2897L20.4853 2.09729Z">
-                                        </path>
-                                    </svg>
-                                </a>
-
-                                <button class="delete-btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                        <path
-                                            d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z">
-                                        </path>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

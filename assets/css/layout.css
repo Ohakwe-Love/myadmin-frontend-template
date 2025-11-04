@@ -274,9 +274,11 @@
     --myadmin-form-valid-border-color: #3ec396;
     --myadmin-form-invalid-color: #f36270;
     --myadmin-form-invalid-border-color: #f36270;
+    --myadmin-shine: rgba(117, 117, 117, 0.1);
 }
 
 [data-bs-theme=dark] {
+    --myadmin-shine: rgba(255, 255, 255, 0.1);
     color-scheme: dark;
     --myadmin-body-color: #aab8c5;
     --myadmin-body-color-rgb: 170, 184, 197;
@@ -417,6 +419,36 @@ input {
     width: 100%;
     padding: 0 20px;
     margin: auto;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--myadmin-green);
+    border-radius: 50px;
+    font-size: 0.95rem;
+    margin-bottom: 3rem;
+    backdrop-filter: blur(10px);
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--myadmin-green);
+    border-radius: 50%;
+    display: block;
+}
+
+.status-badge.in-progress {
+    border: 1px solid var(--myadmin-orange);
+}
+
+.status-badge.in-progress .status-dot {
+    background: var(--myadmin-orange);
 }
 
 .layout {
@@ -677,7 +709,7 @@ footer {
     justify-content: center;
 
     a {
-        color: var(--myadmin-blue);
+        color: var(--myadmin-link-color);
     }
 }
 
@@ -872,7 +904,7 @@ a.dropdown-item {
 .sidebar,
 .page-content-wrapper {
     overflow-y: scroll;
-    height: 90vh;
+    height: 88.5vh;
 }
 
 .sidebar::-webkit-scrollbar,
@@ -1082,10 +1114,6 @@ a.dropdown-item {
 
 .page-content-wrapper {
     grid-area: main;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
 }
 
 .page-content-header,
@@ -1095,7 +1123,6 @@ a.dropdown-item {
     box-shadow: var(--myadmin-box-shadow);
     padding: .75rem 1.125rem;
     width: 100%;
-    margin-bottom: 1.125rem;
 
     a {
         color: var(--myadmin-body-color);
@@ -1114,9 +1141,11 @@ a.dropdown-item {
     padding: 25px;
     display: flex;
     width: 100%;
+    height: 81%;
     align-items: flex-start;
     gap: 20px;
     flex-direction: column;
+    overflow-y: scroll;
 }
 
 .group-header {
@@ -1134,8 +1163,8 @@ a.dropdown-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%; 
-} 
+    width: 100%;
+}
 
 .page-related-content {
     width: 100%;
@@ -1208,51 +1237,52 @@ a.dropdown-item {
     margin-top: 20px;
 }
 
+.edit-btn,
+.cancel-btn,
+.save-btn,
+.delete-btn {
+    padding: 5px 10px;
+    border-radius: var(--myadmin-border-radius);
+    color: var(--myadmin-white);
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-btn {
+    background: var(--myadmin-indigo);
+}
+
+.delete-btn,
+.cancel-btn {
+    background: var(--myadmin-red);
+}
+
+.save-btn {
+    background: var(--myadmin-green);
+}
+
 .form {
-    max-width: 500px;
     background-color: var(--myadmin-secondary-bg);
     border-radius: 10px;
     color: var(--myadmin-body-color);
     padding: 40px;
     box-shadow: var(--myadmin-box-shadow);
     font-size: 16px;
+    max-width: 100%;
 
     h1 {
         text-align: center;
         margin-bottom: 20px;
         color: var(--myadmin-heading-color);
         text-transform: capitalize;
-        /* display: none; */
     }
 
-    .form-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 15px 10px;
-    }
-
-    .span2 {
-        grid-column: span 2;
-    }
-
-    .form-group {
-        /* background-color: orange; */
-    }
-
-    label {
-        display: block;
-        text-transform: capitalize;
-        /* background-color: yellow; */
-        margin-bottom: 10px;
-    }
-
-    label.important::after {
-        content: "*";
-        color: var(--myadmin-red);
-        margin-left: 2px;
-    }
-
-    input, textarea {
+    input,
+    textarea {
         display: block;
         height: 45px;
         padding: 10px;
@@ -1264,12 +1294,16 @@ a.dropdown-item {
         transition: 0.5s ease-in-out;
     }
 
-    input.error, textarea.error, .skill-icon-input-group.error {
+    input.error,
+    textarea.error,
+    .skill-icon-input-group.error {
         border-color: var(--myadmin-form-invalid-border-color);
         color: var(--myadmin-form-invalid-color);
     }
 
-    input.success, textarea.success, .skill-icon-input-group.success {
+    input.success,
+    textarea.success,
+    .skill-icon-input-group.success {
         border-color: var(--myadmin-form-valid-border-color);
         color: var(--myadmin-form-valid-color);
     }
@@ -1282,64 +1316,127 @@ a.dropdown-item {
         display: none;
     }
 
-    textarea {
-        height: auto;
-        min-height: 100px;
-        resize: none;
+    input:focus,
+    textarea:focus {
+        border-color: var(--myadmin-blue);
     }
 
-    .form-group.skill-icon-input-group {
-        background: var(--myadmin-input-bg);
-        height: 80px;
-        border: 1px solid transparent;
+    textarea {
+        resize: none;
+        overflow-y: scroll;
+    }
+}
 
-        label {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 15px 20px;
+}
+
+.span2 {
+    grid-column: span 2;
+}
+
+label {
+    display: block;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+}
+
+label.important::after {
+    content: "*";
+    color: var(--myadmin-red);
+    margin-left: 2px;
+}
+
+.file-input-group {
+    background: var(--myadmin-input-bg);
+    border: 1px solid transparent;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 20px;
+    transition: 0.5s ease-in-out;
+
+    label {
+        height: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        padding: 10px;
+    }
+
+    label span {
+        width: 40px;
+        height: 40px;
+
+        svg {
             width: 100%;
             height: 100%;
-            padding: 10px;
-        }
-
-        label span {
-            width: 40px;
-            height: 40px;
-
-            svg {
-                width: 100%;
-                height: 100%;
-            }
-        }
-
-        label::after {
-            content: "";
         }
     }
 
-    button.submit-btn {
-        background: var(--myadmin-blue);
-        border: none;
-        color: var(--myadmin-white);
-        padding: 12px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-top: 20px;
+    label::after {
+        content: "";
+    }
+}
+
+.preview-selected-img {
+    width: 0px;
+    overflow: hidden;
+    object-fit: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    transition: 0.5s ease-in-out;
+
+    img {
         width: 100%;
-        font-size: 12px;
-        text-transform: uppercase;
-        font-weight: 600;
+        height: 100%;
+        display: block;
+        object-fit: cover;
     }
-    
-    button.submit-btn:disabled, button.submit-btn.disabled {
-        opacity: 0.6;
-    }
+}
 
-    button.submit-btn.disabled:hover {
-        cursor: not-allowed;
-    }
+.preview-selected-img.img-selected {
+    width: 100px;
+}
+
+.file-input-group.img-selected {
+    grid-column: span 2;
+}
+
+
+button.submit-btn {
+    background: var(--myadmin-blue);
+    border: none;
+    color: var(--myadmin-white);
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+button.submit-btn:disabled,
+button.submit-btn.disabled {
+    opacity: 0.6;
+}
+
+button.submit-btn.disabled:hover {
+    cursor: not-allowed;
+}
+
+.form-btn {
+    width: 100%;
+    height: 40px;
+    border-radius: 0;
 }
 
 @media (max-width: 900px) {

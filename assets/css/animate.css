@@ -109,6 +109,13 @@
     }
 }
 
+.pulse {
+    -webkit-animation-name: pulse;
+    animation-name: pulse;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
 @keyframes pulse {
     0% {
         -webkit-transform: scale(1);
@@ -117,9 +124,9 @@
     }
 
     50% {
-        -webkit-transform: scale(1.1);
-        -ms-transform: scale(1.1);
-        transform: scale(1.1);
+        -webkit-transform: scale(1.5);
+        -ms-transform: scale(1.5);
+        transform: scale(1.5);
     }
 
     100% {
@@ -127,11 +134,6 @@
         -ms-transform: scale(1);
         transform: scale(1);
     }
-}
-
-.pulse {
-    -webkit-animation-name: pulse;
-    animation-name: pulse;
 }
 
 @-webkit-keyframes shake {

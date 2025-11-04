@@ -78,7 +78,7 @@ function showNotification(message, timeout = 2000) {
 
 // Delegated click handlers so buttons without inline onclick work as well
 document.addEventListener('click', (e) => {
-    const editBtn = e.target.closest('.edit-btn');
+    const editBtn = e.target.closest('.edit-content-btn');
     if (editBtn) {
         e.preventDefault();
         enableEdit(editBtn);
@@ -117,26 +117,57 @@ document.addEventListener('keydown', (e) => {
 });
 
 // toggle form 
-const addSkillFormToggle = document.querySelector(".addSkillFormToggle");
-const addSkillFormWrapper = document.querySelector(".addSkillFormWrapper");
+// const addSkillFormToggle = document.querySelector(".addSkillFormToggle");
+// const addSkillFormWrapper = document.querySelector(".addSkillFormWrapper");
 
-function toggleForm() {
-    if (!addSkillFormWrapper || !addSkillFormToggle) return;
+// function toggleForm() {
+//     if (!addSkillFormWrapper || !addSkillFormToggle) return;
 
-    const isCollapsed = addSkillFormWrapper.classList.toggle("collapsed");
+//     const isCollapsed = addSkillFormWrapper.classList.toggle("collapsed");
 
-    if (isCollapsed) {
-        // If the form is now collapsed
-        addSkillFormToggle.classList.remove("cancel");
-        addSkillFormToggle.textContent = "Add Skill +";
-    } else {
-        // If the form is expanded
-        addSkillFormToggle.classList.add("cancel");
-        addSkillFormToggle.textContent = "Cancel";
-    }
-}
+//     if (isCollapsed) {
+//         // If the form is now collapsed
+//         addSkillFormToggle.classList.remove("cancel");
+//         addSkillFormToggle.textContent = "Add Skill +";
+//     } else {
+//         // If the form is expanded
+//         addSkillFormToggle.classList.add("cancel");
+//         addSkillFormToggle.textContent = "Cancel";
+//     }
+// }
 
-addSkillFormToggle.addEventListener("click", toggleForm);
+// addSkillFormToggle.addEventListener("click", toggleForm);
+
+// preview
+const fileInputGroups = document.querySelectorAll(".file-input-group");
+
+fileInputGroups.forEach(inputGroup => {
+    const previewSelectedImg = inputGroup.querySelector(".preview-selected-img");
+    const previewImg = previewSelectedImg.querySelector("img");
+    const fileInput = inputGroup.querySelector("input[type='file']");
+
+    fileInput.addEventListener("input", () => {
+        const file = fileInput.value;
+        const imgPath = "assets/images/uploads/"
+
+        if (file) {
+            previewImg.src = file;
+            
+            const splitFileSrc = file.split(".");
+
+            const imgExt = splitFileSrc.length - 1;
+
+            console.log(file)
+            
+            previewImg.src = imgPath + imgExt;
+
+            console.log(previewImg);
+            
+            inputGroup.classList.add("img-selected");
+            previewSelectedImg.classList.add("img-selected");
+        }
+    })
+})
 
 // // Select elements
 // const addSkillForm = document.querySelector(".addSkillForm");

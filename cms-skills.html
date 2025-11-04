@@ -1049,43 +1049,7 @@
                     <div class="page-related-header">
                         <h2>Skills</h2>
 
-                        <button class="cta-btn addSkillFormToggle">Add Skill +</button>
-                    </div>
-
-                    <div class="addSkillFormWrapper collapsed">
-                        <form action="" class="form addSkillForm" enctype="multipart/form-data"
-                            autocomplete="on">
-                            <h1>Add new skill</h1>
-                            <div class="form-row">
-                                <div class="form-group span2">
-                                    <label for="skill-title" class="important">skill title</label>
-                                    <input type="text" name="skill-title" id="skill-title" placeholder="Problem-Solving"
-                                        required>
-                                </div>
-                                <div class="form-group span2">
-                                    <label for="skill-description" class="important">skill description</label>
-                                    <textarea name="skill-description" id="skill-description" maxlength="200"
-                                        minlength="100" required wrap="soft">Approach complex technical challenges with a structured...</textarea>
-                                </div>
-
-                                <div class="form-group span2 skill-icon-input-group">
-                                    <label for="skill-icon" class="important">
-                                        <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                fill="currentColor">
-                                                <path
-                                                    d="M21 15V18H24V20H21V23H19V20H16V18H19V15H21ZM21.0082 3C21.556 3 22 3.44495 22 3.9934L22.0007 13.3417C21.3749 13.1204 20.7015 13 20 13V5H4L4.001 19L13.2929 9.70715C13.6528 9.34604 14.22 9.31823 14.6123 9.62322L14.7065 9.70772L18.2521 13.2586C15.791 14.0069 14 16.2943 14 19C14 19.7015 14.1204 20.3749 14.3417 21.0007L2.9918 21C2.44405 21 2 20.5551 2 20.0066V3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082ZM8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7Z">
-                                                </path>
-                                            </svg>
-                                        </span>
-                                        Upload Skill Icon
-                                    </label>
-                                    <input type="file" id="skill-icon" name="skill-icon">
-                                </div>
-                            </div>
-
-                            <button type="submit" class="submit-btn disabled">Add skill</button>
-                        </form>
+                        <a href="add-skill.html" class="cta-btn">Add Skill +</a>
                     </div>
 
                     <div class="skills-grid">
@@ -1099,11 +1063,20 @@
                                 and systematic mindset.</p>
 
                             <div class="actions">
-                                <button class="edit-btn">
+                                <a href="edit-skill.html" class="edit-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M16.7574 2.99678L14.7574 4.99678H5V18.9968H19V9.23943L21 7.23943V19.9968C21 20.5491 20.5523 20.9968 20 20.9968H4C3.44772 20.9968 3 20.5491 3 19.9968V3.99678C3 3.4445 3.44772 2.99678 4 2.99678H16.7574ZM20.4853 2.09729L21.8995 3.5115L12.7071 12.7039L11.2954 12.7064L11.2929 11.2897L20.4853 2.09729Z">
+                                        </path>
+                                    </svg>
+                                </a>
 
-                                </button>
                                 <button class="delete-btn">
-                                    
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z">
+                                        </path>
+                                    </svg>
                                 </button>
                             </div>
                         </div>
@@ -1116,6 +1089,23 @@
                             <p class="skill-description">Work effectively in a team, provide constructive code feedback,
                                 and
                                 utilize Git flow smoothly.</p>
+                            <div class="actions">
+                                <a href="edit-skill.html" class="edit-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M16.7574 2.99678L14.7574 4.99678H5V18.9968H19V9.23943L21 7.23943V19.9968C21 20.5491 20.5523 20.9968 20 20.9968H4C3.44772 20.9968 3 20.5491 3 19.9968V3.99678C3 3.4445 3.44772 2.99678 4 2.99678H16.7574ZM20.4853 2.09729L21.8995 3.5115L12.7071 12.7039L11.2954 12.7064L11.2929 11.2897L20.4853 2.09729Z">
+                                        </path>
+                                    </svg>
+                                </a>
+
+                                <button class="delete-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
 
                         <div class="skill-card card">
@@ -1126,6 +1116,23 @@
                             <p class="skill-description">Understand user needs, focusing on accessibility, performance,
                                 and
                                 overall usability.</p>
+                            <div class="actions">
+                                <a href="edit-skill.html" class="edit-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M16.7574 2.99678L14.7574 4.99678H5V18.9968H19V9.23943L21 7.23943V19.9968C21 20.5491 20.5523 20.9968 20 20.9968H4C3.44772 20.9968 3 20.5491 3 19.9968V3.99678C3 3.4445 3.44772 2.99678 4 2.99678H16.7574ZM20.4853 2.09729L21.8995 3.5115L12.7071 12.7039L11.2954 12.7064L11.2929 11.2897L20.4853 2.09729Z">
+                                        </path>
+                                    </svg>
+                                </a>
+
+                                <button class="delete-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
 
                         <div class="skill-card card">
@@ -1135,6 +1142,23 @@
                             <h3 class="skill-title">Security</h3>
                             <p class="skill-description">Ensuring data integrity and safeguarding applications through
                                 proactive measures.</p>
+                            <div class="actions">
+                                <a href="edit-skill.html" class="edit-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M16.7574 2.99678L14.7574 4.99678H5V18.9968H19V9.23943L21 7.23943V19.9968C21 20.5491 20.5523 20.9968 20 20.9968H4C3.44772 20.9968 3 20.5491 3 19.9968V3.99678C3 3.4445 3.44772 2.99678 4 2.99678H16.7574ZM20.4853 2.09729L21.8995 3.5115L12.7071 12.7039L11.2954 12.7064L11.2929 11.2897L20.4853 2.09729Z">
+                                        </path>
+                                    </svg>
+                                </a>
+
+                                <button class="delete-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
 
                     </div>
