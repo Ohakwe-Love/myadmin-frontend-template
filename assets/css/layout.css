@@ -1274,24 +1274,26 @@ a.dropdown-item {
     font-size: 16px;
     max-width: 100%;
 
-    h1 {
-        text-align: center;
-        margin-bottom: 20px;
-        color: var(--myadmin-heading-color);
-        text-transform: capitalize;
-    }
-
     input,
     textarea {
         display: block;
-        height: 45px;
+        height: 50px;
         padding: 10px;
         width: 100%;
-        background: var(--myadmin-input-bg);
+        background: transparent;
         color: var(--myadmin-body-color);
-        border: 1px solid transparent;
+        border: 1px solid var(--myadmin-border-color);
+        border-radius: 4px;
         outline: none;
         transition: 0.5s ease-in-out;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+
+    textarea {
+        height: 100px;
+        padding-top: 10px;
     }
 
     input.error,
@@ -1312,8 +1314,32 @@ a.dropdown-item {
         color: var(--myadmin-body-color);
     }
 
-    input[type="file"] {
-        display: none;
+    .file-input[type="file"]:not(:disabled):not([readonly]) {
+        cursor: pointer;
+    }
+
+    .file-input[type="file"]::file-selector-button {
+        border: none;
+        padding: 10px 15px;
+        background: var(--myadmin-blue);
+        color: var(--myadmin-white);
+        border-right: 1px solid var(--myadmin-border-color);
+        cursor: pointer;
+        display: inline-block;
+        height: 100%;
+        transition: 0.3s ease-in-out;
+        margin-right: 10px;
+    }
+
+    .file-input[type="file"] {
+        background-color: initial;
+        cursor: default;
+        align-items: baseline;
+        color: inherit;
+        text-align: start !important;
+        text-overflow: ellipsis !important;
+        padding: initial;
+        white-space: pre;
     }
 
     input:focus,
@@ -1349,79 +1375,15 @@ label.important::after {
     margin-left: 2px;
 }
 
-.file-input-group {
-    background: var(--myadmin-input-bg);
-    border: 1px solid transparent;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: start;
-    gap: 20px;
-    transition: 0.5s ease-in-out;
-
-    label {
-        height: 100%;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        gap: 10px;
-        cursor: pointer;
-        padding: 10px;
-    }
-
-    label span {
-        width: 40px;
-        height: 40px;
-
-        svg {
-            width: 100%;
-            height: 100%;
-        }
-    }
-
-    label::after {
-        content: "";
-    }
-}
-
-.preview-selected-img {
-    width: 0px;
-    overflow: hidden;
-    object-fit: contain;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-    transition: 0.5s ease-in-out;
-
-    img {
-        width: 100%;
-        height: 100%;
-        display: block;
-        object-fit: cover;
-    }
-}
-
-.preview-selected-img.img-selected {
-    width: 100px;
-}
-
-.file-input-group.img-selected {
-    grid-column: span 2;
-}
-
-
-button.submit-btn {
-    background: var(--myadmin-blue);
+button {
     border: none;
     color: var(--myadmin-white);
-    padding: 12px 20px;
-    border-radius: 5px;
     cursor: pointer;
-    margin-top: 20px;
-    width: 100%;
-    font-size: 12px;
-    text-transform: uppercase;
-    font-weight: 600;
+    font-size: 15px;
+    background: var(--myadmin-blue);
+    border-radius: 5px;
+    padding: 12px 20px;
+    display: block;
 }
 
 button.submit-btn:disabled,
@@ -1434,9 +1396,10 @@ button.submit-btn.disabled:hover {
 }
 
 .form-btn {
-    width: 100%;
-    height: 40px;
-    border-radius: 0;
+    margin: 40px auto 0;
+    width: 50%;
+    height: 50px;
+    margin-top: 40px;
 }
 
 @media (max-width: 900px) {

@@ -55,39 +55,15 @@
 }
 
 @media (max-width: 900px) {
+    .cms-con {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
     .cms-wrapper table {
-        overflow-x: scroll;
-
-        th {
-            text-align: left;
-            text-transform: capitalize;
-        }
-
-        th:last-child,
-        td:last-child {
-            width: 100px;
-            min-width: 100px;
-            max-width: 100px;
-            text-align: center;
-        }
-
-        th,
-        td {
-            padding: 10px;
-            border: 1px solid var(--myadmin-border-color);
-            overflow: hidden;
-            word-break: break-word;
-            vertical-align: top;
-        }
-
-        td ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            gap: 10px;
-        }
+        min-width: 800px; 
+        width: auto;
     }
 }
 
