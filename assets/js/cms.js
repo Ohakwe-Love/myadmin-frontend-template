@@ -352,3 +352,198 @@ setupFormValidation('.addSkillForm', {
         alert('Form submitted successfully! Check console for data.');
     });
 })();
+
+
+(function () {
+    // Character counters
+    const counters = [
+        { input: 'site-title', counter: 'title-count', min: 50, max: 70 },
+        { input: 'meta-description', counter: 'desc-count', min: 120, max: 160 },
+        { input: 'og-title', counter: 'og-title-count', min: 60, max: 95 },
+        { input: 'og-description', counter: 'og-desc-count', min: 110, max: 200 }
+    ];
+
+    counters.forEach(item => {
+        const input = document.getElementById(item.input);
+        const counter = document.getElementById(item.counter);
+
+        if (input && counter) {
+            input.addEventListener('input', function () {
+                const length = this.value.length;
+                counter.textContent = `${length} / ${item.max}`;
+
+                counter.classList.remove('success', 'warning', 'error');
+
+                if (length >= item.min && length <= item.max) {
+                    counter.classList.add('success');
+                } else if (length < item.min || length > item.max * 0.9) {
+                    counter.classList.add('warning');
+                }
+
+                if (length > item.max) {
+                    counter.classList.add('error');
+                }
+            });
+        }
+    });
+
+    // OG Image Dropzone
+    const ogDropzone = document.getElementById('og-dropzone');
+    const ogFileInput = document.getElementById('og-file-input');
+    const ogDropzoneMessage = document.getElementById('og-dropzone-message');
+    const ogFilePreview = document.getElementById('og-file-preview');
+    const ogPreviewImage = document.getElementById('og-preview-image');
+    const ogPreviewName = document.getElementById('og-preview-name');
+    const ogPreviewSize = document.getElementById('og-preview-size');
+    const ogRemoveBtn = document.getElementById('og-remove-file');
+    const ogHiddenInput = document.getElementById('og-image-data');
+    const ogHiddenNameInput = document.getElementById('og-image-name');
+
+    let ogCurrentFile = null;
+
+    ogDropzone.addEventListener('click', function (e) {
+        if (!e.target.closest('.file-preview-remove')) {
+            ogFileInput.click();
+        }
+    });
+
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        ogDropzone.addEventListener(eventName, preventDefaults, false);
+    });
+
+    function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    ['dragenter', 'dragover'].forEach(eventName => {
+        ogDropzone.addEventListener(eventName, function () {
+            ogDropzone.classList.add('drag-over');
+        });
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+        ogDropzone.addEventListener(eventName, function () {
+            ogDropzone.classList.remove('drag-over');
+        });
+    });
+
+    ogDropzone.addEventListener('drop', function (e) {
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+            handleOgFile(files[0]);
+        }
+    });
+
+    ogFileInput.addEventListener('change', function (e) {
+        if (this.files.length > 0) {
+            handleOgFile(this.files[0]);
+        }
+    });
+
+    ogRemoveBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        removeOgFile();
+    });
+
+    function handleOgFile(file) {
+        const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+
+        if (!validTypes.includes(file.type)) {
+            alert('Only JPG, PNG, and WebP images are allowed.');
+            return;
+        }
+
+        if (file.size > 5 * 1024 * 1024) {
+            alert('File size must be less than 5MB.');
+            return;
+        }
+
+        ogCurrentFile = file;
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const fileData = e.target.result;
+
+            ogHiddenInput.value = fileData;
+            ogHiddenNameInput.value = file.name;
+
+            ogPreviewImage.innerHTML = `<img src="${fileData}" alt="${file.name}">`;
+            ogPreviewName.textContent = file.name;
+            ogPreviewSize.textContent = formatFileSize(file.size);
+
+            ogDropzoneMessage.style.display = 'none';
+            ogFilePreview.classList.add('active');
+        };
+        reader.readAsDataURL(file);
+    }
+
+    function removeOgFile() {
+        ogCurrentFile = null;
+        ogFileInput.value = '';
+        ogHiddenInput.value = '';
+        ogHiddenNameInput.value = '';
+        ogPreviewImage.innerHTML = '';
+
+        ogDropzoneMessage.style.display = 'flex';
+        ogFilePreview.classList.remove('active');
+    }
+
+    function formatFileSize(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+    }
+
+    // Select styling
+    const form = document.querySelector('.seo-metadata-form');
+    const selects = form.querySelectorAll('select');
+
+    selects.forEach(select => {
+        select.style.display = 'block';
+        select.style.height = '50px';
+        select.style.padding = '10px';
+        select.style.width = '100%';
+        select.style.background = 'transparent';
+        select.style.color = 'var(--myadmin-body-color)';
+        select.style.border = '1px solid var(--myadmin-border-color)';
+        select.style.borderRadius = '4px';
+        select.style.outline = 'none';
+        select.style.cursor = 'pointer';
+        select.style.fontSize = '16px';
+    });
+
+    // Form submission
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        const seoData = {};
+
+        for (let [key, value] of formData.entries()) {
+            seoData[key] = value;
+        }
+
+        console.log('SEO Metadata:', seoData);
+
+        /*
+        fetch('/api/seo-settings', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            alert('SEO settings saved successfully!');
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('Error saving SEO settings!');
+        });
+        */
+
+        alert('SEO settings saved successfully! Check console for data.');
+    });
+})();
