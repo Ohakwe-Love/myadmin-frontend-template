@@ -116,28 +116,6 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// toggle form 
-// const addSkillFormToggle = document.querySelector(".addSkillFormToggle");
-// const addSkillFormWrapper = document.querySelector(".addSkillFormWrapper");
-
-// function toggleForm() {
-//     if (!addSkillFormWrapper || !addSkillFormToggle) return;
-
-//     const isCollapsed = addSkillFormWrapper.classList.toggle("collapsed");
-
-//     if (isCollapsed) {
-//         // If the form is now collapsed
-//         addSkillFormToggle.classList.remove("cancel");
-//         addSkillFormToggle.textContent = "Add Skill +";
-//     } else {
-//         // If the form is expanded
-//         addSkillFormToggle.classList.add("cancel");
-//         addSkillFormToggle.textContent = "Cancel";
-//     }
-// }
-
-// addSkillFormToggle.addEventListener("click", toggleForm);
-
 // preview
 const fileInputGroups = document.querySelectorAll(".file-input-group");
 
@@ -152,74 +130,22 @@ fileInputGroups.forEach(inputGroup => {
 
         if (file) {
             previewImg.src = file;
-            
+
             const splitFileSrc = file.split(".");
 
             const imgExt = splitFileSrc.length - 1;
 
             console.log(file)
-            
+
             previewImg.src = imgPath + imgExt;
 
             console.log(previewImg);
-            
+
             inputGroup.classList.add("img-selected");
             previewSelectedImg.classList.add("img-selected");
         }
     })
 })
-
-// // Select elements
-// const addSkillForm = document.querySelector(".addSkillForm");
-// const addSkillTitleInput = document.getElementById("skill-title");
-// const addSkillDescInput = document.getElementById("skill-description");
-// const addSkillIconInput = document.getElementById("skill-icon");
-// const addSkillIconGroup = document.querySelector(".skill-icon-input-group");
-// const submitSkillBtn = addSkillForm.querySelector(".submit-btn");
-
-// // Utility: set error/success class
-// function setValidationState(element, isValid) {
-//     element.classList.remove("error", "success");
-//     element.classList.add(isValid ? "success" : "error");
-// }
-
-// // Validation logic
-// function validateForm() {
-//     const titleValid = addSkillTitleInput.value.trim().length > 0;
-//     const descLength = addSkillDescInput.value.trim().length;
-//     const descValid = descLength >= 10 && descLength <= 200;
-//     const iconValid = addSkillIconInput.files.length > 0; // true if file selected
-
-//     // Set input states
-//     setValidationState(addSkillTitleInput, titleValid);
-//     setValidationState(addSkillDescInput, descValid);
-//     setValidationState(addSkillIconGroup, iconValid);
-
-//     // Enable/disable submit button
-//     if (titleValid && descValid && iconValid) {
-//         submitSkillBtn.classList.remove("disabled");
-//         submitSkillBtn.disabled = false;
-//     } else {
-//         submitSkillBtn.classList.add("disabled");
-//         submitSkillBtn.disabled = true;
-//     }
-// }
-
-// // Real-time validation
-// [addSkillTitleInput, addSkillDescInput, addSkillIconInput].forEach((input) => {
-//     input.addEventListener("input", validateForm);
-//     input.addEventListener("change", validateForm);
-// });
-
-// // Final check before submit
-// addSkillForm.addEventListener("submit", (e) => {
-//     validateForm();
-//     if (submitSkillBtn.disabled) {
-//         e.preventDefault();
-//         alert("Please fill out all required fields correctly.");
-//     }
-// });
-
 
 // importing form validation
 import { setupFormValidation } from './formValidation.js';
@@ -232,3 +158,197 @@ setupFormValidation('.addSkillForm', {
     },
     'skill-icon': (input) => input.files.length > 0
 });
+
+(function () {
+    const dropzone = document.getElementById('dropzone');
+    const fileInput = document.getElementById('file-input');
+    const dropzoneMessage = document.getElementById('dropzone-message');
+    const filePreview = document.getElementById('file-preview');
+    const previewImage = document.getElementById('preview-image');
+    const previewName = document.getElementById('preview-name');
+    const previewSize = document.getElementById('preview-size');
+    const removeBtn = document.getElementById('remove-file');
+    const errorMessage = document.getElementById('error-message');
+    const hiddenInput = document.getElementById('stack-icon-data');
+    const hiddenNameInput = document.getElementById('stack-icon-name');
+    const form = document.querySelector('.add-stack-form');
+
+    let currentFile = null;
+
+    if (dropzone === null || fileInput === null || dropzoneMessage === null || filePreview === null ||
+        previewImage === null || previewName === null || previewSize === null || removeBtn === null ||
+        errorMessage === null || hiddenInput === null || hiddenNameInput === null || form === null) {
+        return;
+    }
+
+    // Click to open file dialog
+    dropzone.addEventListener('click', function (e) {
+        if (!e.target.closest('.file-preview-remove')) {
+            fileInput.click();
+        }
+    });
+
+    // Prevent default drag behaviors
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropzone.addEventListener(eventName, preventDefaults, false);
+    });
+
+    function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    // Highlight on drag
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropzone.addEventListener(eventName, function () {
+            dropzone.classList.add('drag-over');
+        });
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropzone.addEventListener(eventName, function () {
+            dropzone.classList.remove('drag-over');
+        });
+    });
+
+    // Handle dropped files
+    dropzone.addEventListener('drop', function (e) {
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+            handleFile(files[0]);
+        }
+    });
+
+    // Handle selected files
+    fileInput.addEventListener('change', function (e) {
+        if (this.files.length > 0) {
+            handleFile(this.files[0]);
+        }
+    });
+
+    // Remove file
+    removeBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        removeFile();
+    });
+
+    function handleFile(file) {
+        // Reset error
+        errorMessage.classList.remove('active');
+        errorMessage.textContent = '';
+
+        // Validate file type
+        if (!file.type.includes('svg')) {
+            showError('Only SVG files are allowed.');
+            return;
+        }
+
+        // Validate file size (max 2MB)
+        if (file.size > 2 * 1024 * 1024) {
+            showError('File size must be less than 2MB.');
+            return;
+        }
+
+        currentFile = file;
+
+        // Read file
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const fileData = e.target.result;
+
+            // Store in hidden input
+            hiddenInput.value = fileData;
+            hiddenNameInput.value = file.name;
+
+            // Show preview
+            previewImage.innerHTML = `<img src="${fileData}" alt="${file.name}">`;
+            previewName.textContent = file.name;
+            previewSize.textContent = formatFileSize(file.size);
+
+            // Toggle visibility
+            dropzoneMessage.style.display = 'none';
+            filePreview.classList.add('active');
+        };
+        reader.readAsDataURL(file);
+    }
+
+    function removeFile() {
+        currentFile = null;
+        fileInput.value = '';
+        hiddenInput.value = '';
+        hiddenNameInput.value = '';
+        previewImage.innerHTML = '';
+
+        // Toggle visibility
+        dropzoneMessage.style.display = 'flex';
+        filePreview.classList.remove('active');
+        errorMessage.classList.remove('active');
+    }
+
+    function showError(message) {
+        errorMessage.textContent = message;
+        errorMessage.classList.add('active');
+        removeFile();
+    }
+
+    function formatFileSize(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+    }
+
+    // Form submission
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Validate stack name
+        const stackName = document.getElementById('stack-name').value.trim();
+        if (!stackName) {
+            alert('Please enter a stack name');
+            return;
+        }
+
+        // Validate file upload
+        if (!currentFile) {
+            showError('Please upload a stack icon');
+            return;
+        }
+
+        const iconData = hiddenInput.value;
+        const iconName = hiddenNameInput.value;
+
+        console.log('Stack Name:', stackName);
+        console.log('Icon Name:', iconName);
+        console.log('Icon Data (first 100 chars):', iconData.substring(0, 100) + '...');
+
+        // Create FormData for submission
+        const formData = new FormData();
+        formData.append('stack_name', stackName);
+        formData.append('stack_icon', iconData);
+        formData.append('stack_icon_name', iconName);
+
+        // Send to server
+        /*
+        fetch('/api/stacks', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            alert('Stack saved successfully!');
+            // Reset form
+            form.reset();
+            removeFile();
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('Error saving stack!');
+        });
+        */
+
+        alert('Form submitted successfully! Check console for data.');
+    });
+})();

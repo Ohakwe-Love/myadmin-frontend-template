@@ -126,30 +126,6 @@
     display: flex;
 }
 
-.addSkillFormWrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.3s ease-in-out !important;
-    transform: scale(1);
-    max-height: 100vh;
-
-    form {
-        width: 500px;
-    }
-}
-
-.addSkillFormWrapper.collapsed {
-    max-height: 0;
-    transform: scale(0);
-    overflow: hidden;
-}
-
-.addSkillFormToggle.cancel {
-    background: var(--myadmin-red);
-}
-
 /* skills */
 .skills-grid {
     margin-top: 40px;
@@ -269,13 +245,11 @@
     font-size: 28px;
     font-weight: 700;
     margin-bottom: 16px;
-    color: var(--contrast);
 }
 
 .service-description {
     font-size: 16px;
     line-height: 1.7;
-    color: var(--text-color);
     margin-bottom: 28px;
 }
 
@@ -290,7 +264,6 @@
     align-items: center;
     gap: 12px;
     font-size: 15px;
-    color: var(--text-color);
     border-bottom: 1px solid var(--myadmin-border-color);
 }
 
@@ -302,7 +275,7 @@
     content: '';
     width: 6px;
     height: 6px;
-    background: var(--accent);
+    background: var(--myadmin-green);
     border-radius: 50%;
     flex-shrink: 0;
 }
@@ -328,8 +301,17 @@
 }
 
 .stack-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    text-transform: capitalize;
+    border: 1px solid var(--myadmin-border-color);
+    padding: 10px;
     img {
         width: 100%;
+        max-height: 60px;
     }
 }
 

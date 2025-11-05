@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Admin</title>
 
+    <!-- Load Dropzone first -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css"> -->
+
     <link rel="stylesheet" href="assets/css/layout.css">
     <link rel="stylesheet" href="assets/css/cms.css">
     <link rel="stylesheet" href="assets/css/topbar.css">
@@ -1041,60 +1044,56 @@
 
         <section class="page-content-wrapper">
             <div class="page-content-header">
-                <h2>Edit Service</h2>
+                <h2>Add Stack</h2>
             </div>
 
             <div class="page-content">
                 <div class="page-related-content">
                     <div class="formWrapper">
-                        <form action="" class="form add-service-form" enctype="multipart/form-data" autocomplete="on">
+                        <form action="" class="form add-stack-form" enctype="multipart/form-data" autocomplete="on">
                             <div class="form-row">
-                                <!-- Service Title -->
-                                <div class="form-group">
-                                    <label for="service-title" class="important">service title</label>
-                                    <input type="text" name="service-title" id="service-title"
-                                        placeholder="Web Development" required>
-                                </div>
-
-                                <!-- Service Icon Upload -->
-                                <div class="form-group file-input-group">
-                                    <label for="service-icon" class="important">
-                                        Upload Service Icon (SVG)
-                                    </label>
-                                    <input type="file" id="service-icon" name="service-icon" class="file-input"
-                                        accept=".svg,image/svg+xml">
-                                </div>
-
-                                <!-- Service Description -->
-                                <div class="form-group span2 description-group">
-                                    <label for="service-description" class="important">service description</label>
-                                    <textarea name="service-description" id="service-description" maxlength="300"
-                                        minlength="50" required wrap="soft"
-                                        placeholder="Cutting-edge web applications engineered with modern frameworks..."></textarea>
-                                </div>
-
-                                <!-- Service Features -->
                                 <div class="form-group span2">
-                                    <label for="service-feature-1" class="important">service features (minimum
-                                        3)</label>
+                                    <label for="stack-name" class="important">stack name</label>
+                                    <input type="text" name="stack-name" id="stack-name"
+                                        placeholder="React, Laravel, PHP, etc." required>
+                                </div>
 
-                                    <div class="feature-inputs">
-                                        <input type="text" name="service-feature-1" id="service-feature-1"
-                                            placeholder="Feature 1: Custom full-stack development" required>
+                                <!-- Dropzone -->
+                                <div class="form-group span2">
+                                    <label class="important">Upload Stack Icon (SVG only)</label>
+                                    <div class="dropzone" id="dropzone">
+                                        <input type="file" id="file-input" accept=".svg,image/svg+xml" />
 
-                                        <input type="text" name="service-feature-2" id="service-feature-2"
-                                            placeholder="Feature 2: Progressive web applications" required>
+                                        <div class="dropzone-message" id="dropzone-message">
+                                            <div class="upload-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12.5858L16.2426 16.8284L14.8284 18.2426L13 16.415V22H11V16.413L9.17157 18.2426L7.75736 16.8284L12 12.5858ZM12 2C15.5934 2 18.5544 4.70761 18.9541 8.19395C21.2858 8.83154 23 10.9656 23 13.5C23 16.3688 20.8036 18.7246 18.0006 18.9776L18.0009 16.9644C19.6966 16.7214 21 15.2629 21 13.5C21 11.567 19.433 10 17.5 10C17.2912 10 17.0867 10.0183 16.8887 10.054C16.9616 9.7142 17 9.36158 17 9C17 6.23858 14.7614 4 12 4C9.23858 4 7 6.23858 7 9C7 9.36158 7.03838 9.7142 7.11205 10.0533C6.91331 10.0183 6.70879 10 6.5 10C4.567 10 3 11.567 3 13.5C3 15.2003 4.21241 16.6174 5.81986 16.934L6.00005 16.9646L6.00039 18.9776C3.19696 18.7252 1 16.3692 1 13.5C1 10.9656 2.71424 8.83154 5.04648 8.19411C5.44561 4.70761 8.40661 2 12 2Z"></path></svg>
+                                            </div>
+                                            <div class="upload-text">Drop files here or click to upload.</div>
+                                            <div class="upload-subtext">(Only SVG files are accepted)</div>
+                                        </div>
 
-                                        <input type="text" name="service-feature-3" id="service-feature-3"
-                                            placeholder="Feature 3: API integration & optimization" required>
+                                        <div class="file-preview" id="file-preview">
+                                            <div class="file-preview-image" id="preview-image"></div>
+                                            <div class="file-preview-details">
+                                                <div class="file-preview-name" id="preview-name"></div>
+                                                <div class="file-preview-size" id="preview-size"></div>
+                                            </div>
+                                            <button type="button" class="file-preview-remove"
+                                                id="remove-file">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855 12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z"></path></svg>
+                                            </button>
+                                        </div>
 
-                                        <input type="text" name="service-feature-4" id="service-feature-4"
-                                            placeholder="Feature 4: Performance & SEO mastery">
+                                        <div class="error-message" id="error-message"></div>
                                     </div>
                                 </div>
+
+                                <!-- Hidden input to store file data -->
+                                <input type="hidden" name="stack-icon-data" id="stack-icon-data">
+                                <input type="hidden" name="stack-icon-name" id="stack-icon-name">
                             </div>
 
-                            <button type="submit" class="form-btn">Save Service</button>
+                            <button type="submit" class="form-btn">Save Stack</button>
                         </form>
                     </div>
                 </div>
@@ -1107,6 +1106,8 @@
         </section>
     </main>
 
+    <!-- ajax -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js"></script -->
     <script src="assets/js/main.js"></script>
     <script type="module" src="assets/js/cms.js"></script>
 </body>

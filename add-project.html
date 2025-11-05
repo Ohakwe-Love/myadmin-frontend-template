@@ -542,7 +542,7 @@
                             <span class="sidebar-item-text">Contact</span>
                         </a> -->
 
-                        <a href="cms-projects.html" class="sidebar-item">
+                        <a href="cms-projects.html" class="sidebar-item active">
                             <span class="sidebar-item-icon">
                                 <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"
                                     class="size-5">
@@ -600,7 +600,7 @@
                             <span class="sidebar-item-text">Skills</span>
                         </a>
 
-                        <a href="cms-services.html" class="sidebar-item active">
+                        <a href="cms-services.html" class="sidebar-item">
                             <span class="sidebar-item-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                     <path fill="currentColor" fill-rule="evenodd"
@@ -858,7 +858,7 @@
                             <span class="sidebar-item-text">Contact</span>
                         </a> -->
 
-                        <a href="cms-projects.html" class="sidebar-item">
+                        <a href="cms-projects.html" class="sidebar-item active">
                             <span class="sidebar-item-icon">
                                 <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"
                                     class="size-5">
@@ -917,7 +917,7 @@
                             <span class="sidebar-item-text">Skills</span>
                         </a>
 
-                        <a href="cms-services.html" class="sidebar-item active">
+                        <a href="cms-services.html" class="sidebar-item">
                             <span class="sidebar-item-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                     <path fill="currentColor" fill-rule="evenodd"
@@ -1041,60 +1041,89 @@
 
         <section class="page-content-wrapper">
             <div class="page-content-header">
-                <h2>Edit Service</h2>
+                <h2>Add Project</h2>
             </div>
 
             <div class="page-content">
                 <div class="page-related-content">
                     <div class="formWrapper">
-                        <form action="" class="form add-service-form" enctype="multipart/form-data" autocomplete="on">
+                        <form action="" class="form add-project-form" enctype="multipart/form-data" autocomplete="on">
                             <div class="form-row">
-                                <!-- Service Title -->
+                                <!-- Project Title -->
                                 <div class="form-group">
-                                    <label for="service-title" class="important">service title</label>
-                                    <input type="text" name="service-title" id="service-title"
-                                        placeholder="Web Development" required>
+                                    <label for="project-title" class="important">project title</label>
+                                    <input type="text" name="project-title" id="project-title"
+                                        placeholder="Frontend Development" required>
                                 </div>
 
-                                <!-- Service Icon Upload -->
+                                <!-- Project Image Upload -->
                                 <div class="form-group file-input-group">
-                                    <label for="service-icon" class="important">
-                                        Upload Service Icon (SVG)
+                                    <label for="project-image" class="important">
+                                        Upload Project Image
                                     </label>
-                                    <input type="file" id="service-icon" name="service-icon" class="file-input"
-                                        accept=".svg,image/svg+xml">
+                                    <input type="file" id="project-image" name="project-image" class="file-input"
+                                        accept="image/*" required>
                                 </div>
 
-                                <!-- Service Description -->
+                                <!-- Project Description -->
                                 <div class="form-group span2 description-group">
-                                    <label for="service-description" class="important">service description</label>
-                                    <textarea name="service-description" id="service-description" maxlength="300"
+                                    <label for="project-description" class="important">project description</label>
+                                    <textarea name="project-description" id="project-description" maxlength="250"
                                         minlength="50" required wrap="soft"
-                                        placeholder="Cutting-edge web applications engineered with modern frameworks..."></textarea>
+                                        placeholder="Building responsive, performant interfaces with modern frameworks and best practices..."></textarea>
                                 </div>
 
-                                <!-- Service Features -->
+                                <!-- Project Type -->
+                                <div class="form-group">
+                                    <label for="project-type" class="important">project type</label>
+                                    <select name="project-type" id="project-type" required>
+                                        <option value="">Select project type</option>
+                                        <option value="dynamic">Dynamic</option>
+                                        <option value="static">Static</option>
+                                    </select>
+                                </div>
+
+                                <!-- Project Status -->
+                                <div class="form-group">
+                                    <label for="project-status" class="important">project status</label>
+                                    <select name="project-status" id="project-status" required>
+                                        <option value="">Select status</option>
+                                        <option value="live">Live</option>
+                                        <option value="in-progress">In Progress</option>
+                                    </select>
+                                </div>
+
+                                <!-- Technology Stack -->
                                 <div class="form-group span2">
-                                    <label for="service-feature-1" class="important">service features (minimum
-                                        3)</label>
+                                    <label for="project-stack-1" class="important">technology stack (minimum 2)</label>
 
-                                    <div class="feature-inputs">
-                                        <input type="text" name="service-feature-1" id="service-feature-1"
-                                            placeholder="Feature 1: Custom full-stack development" required>
+                                    <div class="stack-inputs">
+                                        <input type="text" name="project-stack-1" id="project-stack-1"
+                                            placeholder="Technology 1: React" required>
 
-                                        <input type="text" name="service-feature-2" id="service-feature-2"
-                                            placeholder="Feature 2: Progressive web applications" required>
+                                        <input type="text" name="project-stack-2" id="project-stack-2"
+                                            placeholder="Technology 2: TypeScript" required>
 
-                                        <input type="text" name="service-feature-3" id="service-feature-3"
-                                            placeholder="Feature 3: API integration & optimization" required>
+                                        <input type="text" name="project-stack-3" id="project-stack-3"
+                                            placeholder="Technology 3: Next.js">
 
-                                        <input type="text" name="service-feature-4" id="service-feature-4"
-                                            placeholder="Feature 4: Performance & SEO mastery">
+                                        <input type="text" name="project-stack-4" id="project-stack-4"
+                                            placeholder="Technology 4: Tailwind CSS">
+
+                                        <input type="text" name="project-stack-5" id="project-stack-5"
+                                            placeholder="Technology 5: Node.js">
                                     </div>
+                                </div>
+
+                                <!-- Project URL (Optional) -->
+                                <div class="form-group span2">
+                                    <label for="project-url">project live url</label>
+                                    <input type="url" name="project-url" id="project-url"
+                                        placeholder="https://example.com">
                                 </div>
                             </div>
 
-                            <button type="submit" class="form-btn">Save Service</button>
+                            <button type="submit" class="form-btn">Save Project</button>
                         </form>
                     </div>
                 </div>

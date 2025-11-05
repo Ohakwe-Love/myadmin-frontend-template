@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Metadata Form</title>
+    <style>
+        :root {
+            --myadmin-secondary-bg: #1a1a2e;
+            --myadmin-body-color: #e0e0e0;
+            --myadmin-border-color: #2d2d44;
+            --myadmin-blue: #4a9eff;
+            --myadmin-white: #ffffff;
+            --myadmin-red: #ff4757;
+            --myadmin-green: #2ed573;
+            --myadmin-yellow: #ffa502;
+            --myadmin-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --myadmin-form-invalid-border-color: #ff4757;
+            --myadmin-form-invalid-color: #ff4757;
+            --myadmin-form-valid-border-color: #2ed573;
+            --myadmin-form-valid-color: #2ed573;
+        }
+
+        body {
+            background: #0f0f1e;
+            color: var(--myadmin-body-color);
+            font-family: system-ui, -apple-system, sans-serif;
+            padding: 20px;
+        }
+
+        .form {
+            background-color: var(--myadmin-secondary-bg);
+            border-radius: 10px;
+            color: var(--myadmin-body-color);
+            padding: 40px;
+            box-shadow: var(--myadmin-box-shadow);
+            font-size: 16px;
+            max-width: 100%;
+        }
+
+        .form input,
+        .form textarea {
+            display: block;
+            height: 50px;
+            padding: 10px;
+            width: 100%;
+            background: transparent;
+            color: var(--myadmin-body-color);
+            border: 1px solid var(--myadmin-border-color);
+            border-radius: 4px;
+            outline: none;
+            transition: 0.5s ease-in-out;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        .form textarea {
+            height: 100px;
+            padding-top: 10px;
+            resize: none;
+            overflow-y: scroll;
+        }
+
+        .form input.error,
+        .form textarea.error {
+            border-color: var(--myadmin-form-invalid-border-color);
+            color: var(--myadmin-form-invalid-color);
+        }
+
+        .form input.success,
+        .form textarea.success {
+            border-color: var(--myadmin-form-valid-border-color);
+            color: var(--myadmin-form-valid-color);
+        }
+
+        .form input::placeholder,
+        .form textarea::placeholder {
+            color: var(--myadmin-body-color);
+            opacity: 0.6;
+        }
+
+        .form input:focus,
+        .form textarea:focus {
+            border-color: var(--myadmin-blue);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+            gap: 15px 20px;
+        }
+
+        .span2 {
+            grid-column: span 2;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            display: block;
+            text-transform: capitalize;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        label.important::after {
+            content: "*";
+            color: var(--myadmin-red);
+            margin-left: 2px;
+        }
+
+        .label-info {
+            font-size: 12px;
+            opacity: 0.7;
+            text-transform: none;
+            font-weight: normal;
+        }
+
+        .char-counter {
+            font-size: 12px;
+            margin-top: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .char-count {
+            opacity: 0.7;
+        }
+
+        .char-count.warning {
+            color: var(--myadmin-yellow);
+        }
+
+        .char-count.error {
+            color: var(--myadmin-red);
+        }
+
+        .char-count.success {
+            color: var(--myadmin-green);
+        }
+
+        button {
+            border: none;
+            color: var(--myadmin-white);
+            cursor: pointer;
+            font-size: 15px;
+            background: var(--myadmin-blue);
+            border-radius: 5px;
+            padding: 12px 20px;
+            display: block;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #3a8eef;
+        }
+
+        .form-btn {
+            margin: 40px auto 0;
+            width: 50%;
+            height: 50px;
+        }
+
+        .form-section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--myadmin-border-color);
+        }
+
+        .form-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .form-section-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--myadmin-blue);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: var(--myadmin-blue);
+            border-radius: 2px;
+        }
+
+        /* Custom Dropzone for OG Image */
+        .custom-dropzone {
+            background: transparent;
+            border: 2px dashed var(--myadmin-border-color);
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .custom-dropzone:hover,
+        .custom-dropzone.drag-over {
+            border-color: var(--myadmin-blue);
+            background: rgba(74, 158, 255, 0.05);
+        }
+
+        .custom-dropzone input[type="file"] {
+            display: none;
+        }
+
+        .dropzone-message {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .upload-icon {
+            font-size: 48px;
+            color: var(--myadmin-blue);
+        }
+
+        .upload-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--myadmin-body-color);
+        }
+
+        .upload-subtext {
+            font-size: 14px;
+            opacity: 0.7;
+            color: var(--myadmin-body-color);
+        }
+
+        .file-preview {
+            display: none;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--myadmin-border-color);
+            border-radius: 8px;
+            padding: 15px;
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .file-preview.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .file-preview-image {
+            width: 100%;
+            max-width: 300px;
+            height: 150px;
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .file-preview-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .file-preview-details {
+            text-align: center;
+            width: 100%;
+        }
+
+        .file-preview-name {
+            font-size: 12px;
+            color: var(--myadmin-body-color);
+            word-break: break-all;
+            margin-bottom: 5px;
+        }
+
+        .file-preview-size {
+            font-size: 11px;
+            color: var(--myadmin-body-color);
+            opacity: 0.7;
+        }
+
+        .file-preview-remove {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--myadmin-red);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+            line-height: 1;
+            padding: 0;
+            margin: 0;
+        }
+
+        .file-preview-remove:hover {
+            background: #ff3344;
+        }
+
+        .help-text {
+            font-size: 13px;
+            opacity: 0.7;
+            margin-top: 5px;
+            line-height: 1.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .span2 {
+                grid-column: 1 / -1;
+            }
+            
+            .form {
+                padding: 30px 20px;
+            }
+            
+            .form-btn {
+                width: 100%;
+                margin-top: 30px;
+            }
+
+            .custom-dropzone {
+                padding: 30px 20px;
+                min-height: 180px;
+            }
+
+            .form-section {
+                margin-bottom: 30px;
+                padding-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .form {
+                padding: 25px 15px;
+                border-radius: 8px;
+            }
+            
+            .form input,
+            .form textarea {
+                font-size: 16px;
+                height: 48px;
+            }
+
+            .form textarea {
+                height: 100px;
+            }
+            
+            .form-btn {
+                height: 48px;
+                font-size: 16px;
+                margin-top: 25px;
+            }
+            
+            label {
+                font-size: 14px;
+                margin-bottom: 8px;
+            }
+
+            .custom-dropzone {
+                padding: 25px 15px;
+                min-height: 160px;
+            }
+
+            .upload-icon {
+                font-size: 36px;
+            }
+
+            .upload-text {
+                font-size: 16px;
+            }
+
+            .form-section-title {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form action="" class="form seo-metadata-form" enctype="multipart/form-data" autocomplete="on">
+        
+        <!-- Basic SEO Section -->
+        <div class="form-section">
+            <h2 class="form-section-title">Basic SEO Settings</h2>
+            <div class="form-row">
+                <!-- Site Title -->
+                <div class="form-group span2">
+                    <label for="site-title" class="important">
+                        Site Title
+                        <span class="label-info">(Appears in browser tab and search results)</span>
+                    </label>
+                    <input type="text" name="site-title" id="site-title" placeholder="John Doe - Full Stack Developer" required maxlength="70">
+                    <div class="char-counter">
+                        <span class="help-text">Recommended: 50-60 characters</span>
+                        <span class="char-count" id="title-count">0 / 70</span>
+                    </div>
+                </div>
+
+                <!-- Meta Description -->
+                <div class="form-group span2">
+                    <label for="meta-description" class="important">
+                        Meta Description
+                        <span class="label-info">(Appears in search results)</span>
+                    </label>
+                    <textarea name="meta-description" id="meta-description" placeholder="Passionate full-stack developer specializing in modern web technologies. Creating scalable, user-friendly applications with React, Node.js, and more." required maxlength="160"></textarea>
+                    <div class="char-counter">
+                        <span class="help-text">Recommended: 120-160 characters</span>
+                        <span class="char-count" id="desc-count">0 / 160</span>
+                    </div>
+                </div>
+
+                <!-- Keywords -->
+                <div class="form-group span2">
+                    <label for="meta-keywords">
+                        Meta Keywords
+                        <span class="label-info">(Comma-separated)</span>
+                    </label>
+                    <input type="text" name="meta-keywords" id="meta-keywords" placeholder="web developer, full stack, react, nodejs, portfolio">
+                    <div class="help-text">Separate keywords with commas (e.g., web development, react, javascript)</div>
+                </div>
+
+                <!-- Author -->
+                <div class="form-group">
+                    <label for="author-name" class="important">Author Name</label>
+                    <input type="text" name="author-name" id="author-name" placeholder="John Doe" required>
+                </div>
+
+                <!-- Canonical URL -->
+                <div class="form-group">
+                    <label for="canonical-url">Canonical URL</label>
+                    <input type="url" name="canonical-url" id="canonical-url" placeholder="https://yourdomain.com">
+                    <div class="help-text">Your main website URL</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Open Graph (Social Media) Section -->
+        <div class="form-section">
+            <h2 class="form-section-title">Open Graph / Social Media</h2>
+            <div class="form-row">
+                <!-- OG Title -->
+                <div class="form-group span2">
+                    <label for="og-title" class="important">
+                        OG Title
+                        <span class="label-info">(For social media sharing)</span>
+                    </label>
+                    <input type="text" name="og-title" id="og-title" placeholder="John Doe - Full Stack Developer" required maxlength="95">
+                    <div class="char-counter">
+                        <span class="help-text">Recommended: 60-90 characters</span>
+                        <span class="char-count" id="og-title-count">0 / 95</span>
+                    </div>
+                </div>
+
+                <!-- OG Description -->
+                <div class="form-group span2">
+                    <label for="og-description" class="important">OG Description</label>
+                    <textarea name="og-description" id="og-description" placeholder="Check out my portfolio showcasing modern web applications and creative solutions." required maxlength="200"></textarea>
+                    <div class="char-counter">
+                        <span class="help-text">Recommended: 110-200 characters</span>
+                        <span class="char-count" id="og-desc-count">0 / 200</span>
+                    </div>
+                </div>
+
+                <!-- OG Image Upload -->
+                <div class="form-group span2">
+                    <label class="important">
+                        OG Image
+                        <span class="label-info">(Recommended: 1200x630px)</span>
+                    </label>
+                    <div class="custom-dropzone" id="og-dropzone">
+                        <input type="file" id="og-file-input" accept="image/jpeg,image/jpg,image/png,image/webp" />
+                        
+                        <div class="dropzone-message" id="og-dropzone-message">
+                            <div class="upload-icon">🖼️</div>
+                            <div class="upload-text">Drop image here or click to upload.</div>
+                            <div class="upload-subtext">(JPG, PNG, WebP - Max 5MB)</div>
+                        </div>
+
+                        <div class="file-preview" id="og-file-preview">
+                            <div class="file-preview-image" id="og-preview-image"></div>
+                            <div class="file-preview-details">
+                                <div class="file-preview-name" id="og-preview-name"></div>
+                                <div class="file-preview-size" id="og-preview-size"></div>
+                            </div>
+                            <button type="button" class="file-preview-remove" id="og-remove-file">×</button>
+                        </div>
+                    </div>
+                    <input type="hidden" name="og-image-data" id="og-image-data">
+                    <input type="hidden" name="og-image-name" id="og-image-name">
+                </div>
+
+                <!-- OG Type -->
+                <div class="form-group">
+                    <label for="og-type">OG Type</label>
+                    <select name="og-type" id="og-type">
+                        <option value="website">Website</option>
+                        <option value="profile">Profile</option>
+                        <option value="article">Article</option>
+                    </select>
+                </div>
+
+                <!-- OG URL -->
+                <div class="form-group">
+                    <label for="og-url">OG URL</label>
+                    <input type="url" name="og-url" id="og-url" placeholder="https://yourdomain.com">
+                </div>
+            </div>
+        </div>
+
+        <!-- Twitter Card Section -->
+        <div class="form-section">
+            <h2 class="form-section-title">Twitter Card</h2>
+            <div class="form-row">
+                <!-- Twitter Card Type -->
+                <div class="form-group">
+                    <label for="twitter-card">Twitter Card Type</label>
+                    <select name="twitter-card" id="twitter-card">
+                        <option value="summary_large_image">Summary Large Image</option>
+                        <option value="summary">Summary</option>
+                    </select>
+                </div>
+
+                <!-- Twitter Handle -->
+                <div class="form-group">
+                    <label for="twitter-handle">Twitter Handle</label>
+                    <input type="text" name="twitter-handle" id="twitter-handle" placeholder="@yourusername">
+                    <div class="help-text">Your Twitter/X username</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Settings Section -->
+        <div class="form-section">
+            <h2 class="form-section-title">Additional Settings</h2>
+            <div class="form-row">
+                <!-- Robots -->
+                <div class="form-group">
+                    <label for="robots">Robots Meta Tag</label>
+                    <select name="robots" id="robots">
+                        <option value="index, follow">Index, Follow (Default)</option>
+                        <option value="noindex, follow">No Index, Follow</option>
+                        <option value="index, nofollow">Index, No Follow</option>
+                        <option value="noindex, nofollow">No Index, No Follow</option>
+                    </select>
+                </div>
+
+                <!-- Language -->
+                <div class="form-group">
+                    <label for="language">Site Language</label>
+                    <input type="text" name="language" id="language" placeholder="en" value="en">
+                    <div class="help-text">ISO language code (e.g., en, es, fr)</div>
+                </div>
+
+                <!-- Theme Color -->
+                <div class="form-group">
+                    <label for="theme-color">Theme Color</label>
+                    <input type="color" name="theme-color" id="theme-color" value="#4a9eff">
+                    <div class="help-text">Browser address bar color on mobile</div>
+                </div>
+
+                <!-- Favicon URL -->
+                <div class="form-group">
+                    <label for="favicon-url">Favicon URL</label>
+                    <input type="url" name="favicon-url" id="favicon-url" placeholder="/favicon.ico">
+                    <div class="help-text">Path to your favicon file</div>
+                </div>
+            </div>
+        </div>
+        
+        <button type="submit" class="form-btn">Save SEO Settings</button>
+    </form>
+
+    <script>
+        (function() {
+            // Character counters
+            const counters = [
+                { input: 'site-title', counter: 'title-count', min: 50, max: 70 },
+                { input: 'meta-description', counter: 'desc-count', min: 120, max: 160 },
+                { input: 'og-title', counter: 'og-title-count', min: 60, max: 95 },
+                { input: 'og-description', counter: 'og-desc-count', min: 110, max: 200 }
+            ];
+
+            counters.forEach(item => {
+                const input = document.getElementById(item.input);
+                const counter = document.getElementById(item.counter);
+
+                if (input && counter) {
+                    input.addEventListener('input', function() {
+                        const length = this.value.length;
+                        counter.textContent = `${length} / ${item.max}`;
+
+                        counter.classList.remove('success', 'warning', 'error');
+                        
+                        if (length >= item.min && length <= item.max) {
+                            counter.classList.add('success');
+                        } else if (length < item.min || length > item.max * 0.9) {
+                            counter.classList.add('warning');
+                        }
+                        
+                        if (length > item.max) {
+                            counter.classList.add('error');
+                        }
+                    });
+                }
+            });
+
+            // OG Image Dropzone
+            const ogDropzone = document.getElementById('og-dropzone');
+            const ogFileInput = document.getElementById('og-file-input');
+            const ogDropzoneMessage = document.getElementById('og-dropzone-message');
+            const ogFilePreview = document.getElementById('og-file-preview');
+            const ogPreviewImage = document.getElementById('og-preview-image');
+            const ogPreviewName = document.getElementById('og-preview-name');
+            const ogPreviewSize = document.getElementById('og-preview-size');
+            const ogRemoveBtn = document.getElementById('og-remove-file');
+            const ogHiddenInput = document.getElementById('og-image-data');
+            const ogHiddenNameInput = document.getElementById('og-image-name');
+
+            let ogCurrentFile = null;
+
+            ogDropzone.addEventListener('click', function(e) {
+                if (!e.target.closest('.file-preview-remove')) {
+                    ogFileInput.click();
+                }
+            });
+
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                ogDropzone.addEventListener(eventName, preventDefaults, false);
+            });
+
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+            ['dragenter', 'dragover'].forEach(eventName => {
+                ogDropzone.addEventListener(eventName, function() {
+                    ogDropzone.classList.add('drag-over');
+                });
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                ogDropzone.addEventListener(eventName, function() {
+                    ogDropzone.classList.remove('drag-over');
+                });
+            });
+
+            ogDropzone.addEventListener('drop', function(e) {
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    handleOgFile(files[0]);
+                }
+            });
+
+            ogFileInput.addEventListener('change', function(e) {
+                if (this.files.length > 0) {
+                    handleOgFile(this.files[0]);
+                }
+            });
+
+            ogRemoveBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                removeOgFile();
+            });
+
+            function handleOgFile(file) {
+                const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+                
+                if (!validTypes.includes(file.type)) {
+                    alert('Only JPG, PNG, and WebP images are allowed.');
+                    return;
+                }
+
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('File size must be less than 5MB.');
+                    return;
+                }
+
+                ogCurrentFile = file;
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const fileData = e.target.result;
+                    
+                    ogHiddenInput.value = fileData;
+                    ogHiddenNameInput.value = file.name;
+
+                    ogPreviewImage.innerHTML = `<img src="${fileData}" alt="${file.name}">`;
+                    ogPreviewName.textContent = file.name;
+                    ogPreviewSize.textContent = formatFileSize(file.size);
+
+                    ogDropzoneMessage.style.display = 'none';
+                    ogFilePreview.classList.add('active');
+                };
+                reader.readAsDataURL(file);
+            }
+
+            function removeOgFile() {
+                ogCurrentFile = null;
+                ogFileInput.value = '';
+                ogHiddenInput.value = '';
+                ogHiddenNameInput.value = '';
+                ogPreviewImage.innerHTML = '';
+                
+                ogDropzoneMessage.style.display = 'flex';
+                ogFilePreview.classList.remove('active');
+            }
+
+            function formatFileSize(bytes) {
+                if (bytes === 0) return '0 Bytes';
+                const k = 1024;
+                const sizes = ['Bytes', 'KB', 'MB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+            }
+
+            // Select styling
+            const form = document.querySelector('.seo-metadata-form');
+            const selects = form.querySelectorAll('select');
+            
+            selects.forEach(select => {
+                select.style.display = 'block';
+                select.style.height = '50px';
+                select.style.padding = '10px';
+                select.style.width = '100%';
+                select.style.background = 'transparent';
+                select.style.color = 'var(--myadmin-body-color)';
+                select.style.border = '1px solid var(--myadmin-border-color)';
+                select.style.borderRadius = '4px';
+                select.style.outline = 'none';
+                select.style.cursor = 'pointer';
+                select.style.fontSize = '16px';
+            });
+
+            // Form submission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const formData = new FormData(this);
+                const seoData = {};
+
+                for (let [key, value] of formData.entries()) {
+                    seoData[key] = value;
+                }
+
+                console.log('SEO Metadata:', seoData);
+
+                /*
+                fetch('/api/seo-settings', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                    alert('SEO settings saved successfully!');
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert('Error saving SEO settings!');
+                });
+                */
+
+                alert('SEO settings saved successfully! Check console for data.');
+            });
+        })();
+    </script>
+</body>
+</html>
