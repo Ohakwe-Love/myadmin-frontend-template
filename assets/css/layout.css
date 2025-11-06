@@ -357,7 +357,6 @@ body {
     font-family: var(--primary-font);
     color: var(--myadmin-gray-dark);
     background-color: var(--myadmin-light);
-
     margin: 0;
     font-size: var(--myadmin-body-font-size);
     font-weight: var(--myadmin-body-font-weight);
